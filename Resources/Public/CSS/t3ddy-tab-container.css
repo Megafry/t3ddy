@@ -1,0 +1,63 @@
+.t3-gridContainer-t3ddy-tab-container {
+	padding-top: 5px;
+}
+
+.t3ddy-tabs ul li.hidden {
+	border-style: dotted !important;
+}
+.t3ddy-tabs ul li.hidden a {
+	color: #bbb !important;
+}
+
+.t3ddy-tabs ul li span.t3-icon-actions {
+	display: none;
+}
+
+.t3ddy-tabs ul li.ui-sortable-helper {
+	top: 6px !important;
+}
+
+.t3ddy-tabs ul li.ui-tabs-active {
+	padding-right: 30px;
+}
+
+.t3ddy-tabs ul li.ui-tabs-active span.t3-icon-actions {
+	display: block;
+	position: absolute;
+	right: 3px;
+	top: 6px;
+}
+
+.t3ddy-tabs ul li.ui-tabs-active span.t3-icon-actions-document {
+	right: 20px;
+}
+
+
+
+.t3ddy-tabs ul li a.ui-tabs-anchor {
+	max-width: 120px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.t3ddy-tabs ul li.newTabLink {
+	background: none !important;
+	border: none !important;
+	cursor: pointer !important;
+}
+.t3ddy-tabs ul li.newTabLink a {
+	font-weight: bold !important;
+	font-size: 18px;
+	line-height: 0.6em;
+	padding-left: 0.4em !important;
+	padding-right: 0.4em !important;
+	cursor: pointer !important;
+}
+
+.t3ddy-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+	cursor: move;
+}
+
+.t3ddy-tabs .ui-tabs-panel {
+	padding: 0 !important;
+}

@@ -1,0 +1,51 @@
+.t3-gridContainer-t3ddy-accordion {
+	padding-top: 5px;
+}
+
+.t3ddy-accordion a.newLink {
+	background-image: url('../Images/JQueryUI/ui-bg_glass_65_ffffff_1x400.png');
+	border: 1px solid #aaa;
+	float: right;
+	text-align: center;
+	height: 10px;
+	padding-left: 0;
+	padding-right: 0;
+	width: 42px;
+}
+
+.t3ddy-accordion a.newLink:hover {
+	background-image: url('../Images/JQueryUI/ui-bg_glass_75_dadada_1x400.png');
+	border-color: #666;
+}
+
+.t3ddy-accordion a.newLink:hover span {
+	background-image: url('../Images/JQueryUI/ui-icons_222222_256x240.png');
+}
+
+.t3ddy-accordion a.newLink span {
+	margin: 0 0.5em;
+}
+
+.t3ddy-accordion div.clearRight {
+	clear: right;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+}
+
+
+
+.t3ddy-accordion h3 div.icons {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+
+.t3ddy-accordion h3 div.icons a span.t3-icon-actions-document {
+	margin-right: 6px;
+}
+
+
+.t3ddy-accordion .ui-accordion-content {
+	padding: 0 !important;
+}
