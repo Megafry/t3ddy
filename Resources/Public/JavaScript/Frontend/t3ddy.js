@@ -8,6 +8,13 @@
 				$tab.find('.t3ddy-item').appendTo($tabContainer);
 			});
 
+			$tabs.find('a').each(function(){
+				var $link = $(this);
+				var section = $link.attr('href').replace(/.*(#.*)/gi, '$1');
+				var newLink = location.pathname + location.search + section;
+				$link.attr('href', newLink);
+			});
+
 			$tabContainer.tabs();
 		});
 
