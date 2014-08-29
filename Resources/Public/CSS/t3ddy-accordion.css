@@ -35,7 +35,11 @@
 
 
 
+.t3ddy-accordion h3.ui-accordion-header-active {
+	cursor: move;
+}
 .t3ddy-accordion h3 div.icons {
+	cursor: default;
 	position: absolute;
 	right: 10px;
 	top: 5px;
@@ -44,7 +48,6 @@
 .t3ddy-accordion h3 div.icons a span.t3-icon-actions-document {
 	margin-right: 6px;
 }
-
 
 .t3ddy-accordion .ui-accordion-content {
 	padding: 0 !important;

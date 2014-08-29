@@ -20,5 +20,6 @@ tt_content.stdWrap.innerWrap.cObject.default.stdWrap.stdWrap.if {
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:t3ddy/Configuration/Gridelements/TabContainer/setup.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:t3ddy/Configuration/Gridelements/Item/setup.ts">
 
-page.includeJS.jQueryUi = EXT:t3ddy/Resources/Public/JavaScript/Libraries/jquery-ui-1.10.4.min.js
+page.includeCSS.jQueryUi = EXT:t3ddy/Resources/Public/CSS/jquery-ui-1.11.1.min.css
+page.includeJS.jQueryUi = EXT:t3ddy/Resources/Public/JavaScript/Libraries/jquery-ui-1.11.1-custom.min.js
 page.includeJS.t3ddy = EXT:t3ddy/Resources/Public/JavaScript/Frontend/t3ddy.js

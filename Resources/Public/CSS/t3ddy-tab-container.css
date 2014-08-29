@@ -1,3 +1,21 @@
+.t3ddy ul.ui-tabs-nav > li {
+	max-width: 120px;
+}
+
+.t3ddy ul.ui-tabs-nav > li a.ui-tabs-anchor {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-width: 90px;
+}
+
+.t3ddy ul.ui-tabs-nav > li.ui-tabs-active {
+	padding-right: 30px;
+}
+
+.t3ddy ul.ui-tabs-nav > li.ui-tabs-active a.ui-tabs-anchor {
+	cursor: move !important;
+}
+
 .t3-gridContainer-t3ddy-tab-container {
 	padding-top: 5px;
 }
@@ -31,8 +49,6 @@
 .t3ddy-tabs ul li.ui-tabs-active span.t3-icon-actions-document {
 	right: 20px;
 }
-
-
 
 .t3ddy-tabs ul li a.ui-tabs-anchor {
 	max-width: 120px;

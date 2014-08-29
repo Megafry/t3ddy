@@ -83,4 +83,5 @@ class WizardItems extends \GridElementsTeam\Gridelements\Hooks\WizardItems {
 			}
 		}
 	}
+
 }

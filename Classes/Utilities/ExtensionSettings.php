@@ -77,7 +77,4 @@ class ExtensionSettings implements \TYPO3\CMS\Core\SingletonInterface {
 		return (boolean) $this->settings['showT3ddyGridsInNewGroup'];
 	}
 
-
-
-
 }

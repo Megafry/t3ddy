@@ -1,8 +1,8 @@
-# cat=general/basic; type=boolean; label=Disable t3ddy tab container: If checked tab container grid is not available.
+# cat=general/basic; type=boolean; label=Disable t3ddy tab container: If checked, tab container grid is not available.
 disableTabContainer = 0
 
-# cat=general/basic; type=boolean; label=Disable t3ddy accordion: If checked accorion grid is not available.
+# cat=general/basic; type=boolean; label=Disable t3ddy accordion: If checked, accordion grid is not available.
 disableAccordion = 0
 
-# cat=general/basic; type=boolean; label=Show t3ddy grids in own group: If enabled t3ddy tab container grid and accordion grid will be displayed in a new "t3ddy" group in content element wizard.
+# cat=general/basic; type=boolean; label=Show t3ddy grids in own group: If enabled, t3ddy tab and accordion grid will be displayed in a new "t3ddy" group in content element wizard.
 showT3ddyGridsInNewGroup = 1

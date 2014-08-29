@@ -91,7 +91,8 @@ class PageRenderer {
 	 * @return boolean TRUE if is page module, otherwise FALSE
 	 */
 	protected function isPageModule() {
-		return count($_GET) === 1 && array_key_exists('id', $_GET);
+		return (array_key_exists('id', $_GET) && count($_GET) === 1)
+			|| (array_key_exists('id', $_GET) && count($_GET) === 2 && array_key_exists('SET', $_GET));
 	}
 
 	/**
@@ -102,11 +103,11 @@ class PageRenderer {
 	protected function includeLibrariesAndGeneralFiles() {
 		$this->pageRenderer->loadJquery();
 		$this->pageRenderer->addJsLibrary('jquery-cookie', $this->resourcePath . 'JavaScript/Libraries/jquery.cookie.js', 'text/javascript', FALSE, FALSE, '', TRUE);
-		$this->pageRenderer->addJsLibrary('jquery-ui', $this->resourcePath . 'JavaScript/Libraries/jquery-ui-1.10.4.min.js', 'text/javascript', FALSE, FALSE, '', TRUE);
+		$this->pageRenderer->addJsLibrary('jquery-ui', $this->resourcePath . 'JavaScript/Libraries/jquery-ui-1.11.1-custom.min.js', 'text/javascript', FALSE, FALSE, '', TRUE);
 
 		$this->pageRenderer->addJsFile($this->resourcePath . 'JavaScript/Backend/t3ddy.js', 'text/javascript');
 
-		$this->pageRenderer->addCssFile($this->resourcePath . 'CSS/jquery-ui-1.10.4.custom.min.css');
+		$this->pageRenderer->addCssFile($this->resourcePath . 'CSS/jquery-ui-1.11.1.min.css');
 		$this->pageRenderer->addCssFile($this->resourcePath . 'CSS/t3ddy.css');
 	}
 
@@ -117,7 +118,6 @@ class PageRenderer {
 	 */
 	protected function includeTabContainerFiles() {
 		$this->pageRenderer->addCssFile($this->resourcePath . 'CSS/t3ddy-tab-container.css');
-		$this->pageRenderer->addJsFile($this->resourcePath . 'JavaScript/Backend/t3ddy-tab-container.js', 'text/javascript');
 	}
 
 
@@ -128,7 +128,6 @@ class PageRenderer {
 	 */
 	protected function includeAccordionFiles() {
 		$this->pageRenderer->addCssFile($this->resourcePath . 'CSS/t3ddy-accordion.css');
-		$this->pageRenderer->addJsFile($this->resourcePath . 'JavaScript/Backend/t3ddy-accordion.js', 'text/javascript');
 	}
 
 }

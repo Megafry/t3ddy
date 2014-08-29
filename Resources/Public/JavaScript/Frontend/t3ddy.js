@@ -2,10 +2,10 @@
 	$(function() {
 		$('.t3ddy-tabContainer').each(function(){
 			var $tabContainer = $(this);
-			var $tabs = $tabContainer.find('li');
+			var $tabs = $tabContainer.find('>ul > li');
 			$tabs.each(function(){
 				var $tab = $(this);
-				$tab.find('.t3ddy-item').appendTo($tabContainer);
+				$tab.find('> .t3ddy-item').appendTo($tabContainer);
 			});
 
 			$tabs.find('a').each(function(){
