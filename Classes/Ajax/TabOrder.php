@@ -67,7 +67,7 @@ class TabOrder {
 
 			// Index of this tab in grid container
 		$index = 0;
-		foreach ($tabs as $index => $tab) {
+		foreach ($tabs as $tab) {
 			if (intval($tab['uid']) === $tabUid) {
 				break;
 			}
