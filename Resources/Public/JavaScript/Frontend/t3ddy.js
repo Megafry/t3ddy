@@ -21,7 +21,8 @@
 		$('.t3ddy-accordion').each(function(){
 			var $accordionContainer = $(this);
 			$accordionContainer.accordion({
-				heightStyle: 'content'
+				heightStyle: 'content',
+				navigation: true
 			});
 		});
 	});

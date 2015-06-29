@@ -57,6 +57,7 @@ class PageRenderer {
 	 *
 	 * @param array $parameters
 	 * @param \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer
+	 * @return void
 	 */
 	public function addCssAndJs(array $parameters, \TYPO3\CMS\Core\Page\PageRenderer &$pageRenderer) {
 		if ($this->isPageModule()) {
