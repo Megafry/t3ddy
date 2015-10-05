@@ -4,7 +4,7 @@ namespace ArminVieweg\T3ddy\Ajax;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Armin Ruediger Vieweg <armin@v.ieweg.de>
+ *  (c) 2014-2015 Armin Ruediger Vieweg <armin@v.ieweg.de>
  *
  *  All rights reserved
  *
@@ -67,8 +67,9 @@ class TabOrder {
 
 			// Index of this tab in grid container
 		$index = 0;
-		foreach ($tabs as $tab) {
+		foreach ($tabs as $key => $tab) {
 			if (intval($tab['uid']) === $tabUid) {
+				$index = $key;
 				break;
 			}
 		}
