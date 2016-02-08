@@ -19,10 +19,10 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.4.0',
+	'version' => '0.5.0',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '6.0.0-6.2.99',
+			'typo3' => '7.6.0-7.6.99',
 			'gridelements' => '3.0.0-3.2.99',
 		),
 		'conflicts' => array(
