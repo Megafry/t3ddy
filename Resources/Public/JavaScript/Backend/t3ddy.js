@@ -2,7 +2,7 @@ var jQuery = TYPO3.jQuery;
 
 require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, ui) {
 
-	var createNewItemLink = function($container, $items) {
+	var createNewItemLink = function($container, $items, $linkItem) {
 		var originalNewLink = $container.find('> table .t3-page-ce-wrapper-new-ce:first a:first')
 			.attr('href')
 			.replace(/.*\?(.*)\'.*/g, '$1');
@@ -43,7 +43,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 			}
 
 			// Set generated uri to link tag
-			$container.find('.newTabLink:first a').attr('href', decodeURIComponent(response.link));
+			$linkItem.attr('href', decodeURIComponent(response.link))
 		});
 	};
 
@@ -189,7 +189,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 					.attr('title', TYPO3.l10n.localize('newContentElement')[0].target)
 					.appendTo($newTabLinkTab);
 
-				createNewItemLink($t3ddyContainer, $items);
+				createNewItemLink($t3ddyContainer, $items, $newTabLink);
 				
 				$newTabLinkTab.appendTo($ul);
 				$ul.prependTo($container);
@@ -286,7 +286,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				newTabLinkLink.appendTo(newTabLinkWrap);
 				newTabLinkWrap.appendTo($container);
 
-				createNewItemLink($t3ddyContainer, $items);
+				createNewItemLink($t3ddyContainer, $items, newTabLinkLink);
 
 				$('<div />').addClass('clearRight').appendTo($container);
 
