@@ -5,8 +5,16 @@ if (!defined('TYPO3_MODE')) {
 
 if (TYPO3_MODE === 'BE') {
 		// Tab order ajax
-	$GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['AJAX']['T3ddy::changeTabOrder']
-		= 'EXT:t3ddy/Classes/Ajax/TabOrder.php:ArminVieweg\\T3ddy\\Ajax\\TabOrder->change';
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerAjaxHandler (
+        'T3ddy::changeTabOrder',
+        'ArminVieweg\\T3ddy\\Ajax\\TabOrder->change'
+	);
+
+		// Link builder ajax
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerAjaxHandler (
+        'T3ddy::buildCreateNewItemLink',
+        'ArminVieweg\\T3ddy\\Ajax\\LinkBuilder->createNewItemLink'
+	);
 
 		// Wizard XClass
 	$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['GridElementsTeam\\Gridelements\\Hooks\\WizardItems'] = array(

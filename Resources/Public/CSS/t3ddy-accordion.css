@@ -1,29 +1,26 @@
-.t3-gridContainer-t3ddy-accordion {
+.t3-grid-container-t3ddy-accordion {
 	padding-top: 5px;
 }
+.t3-grid-container-t3ddy-accordion .panel-group {
+	margin-bottom: 0;
+}
 
-.t3ddy-accordion a.newLink {
-	background-image: url('../Images/JQueryUI/ui-bg_glass_65_ffffff_1x400.png');
-	border: 1px solid #aaa;
+.t3ddy-accordion .newTabLink {
 	float: right;
+	margin-top: 8px;
+	margin-right: 8px;
+}
+
+.t3ddy-accordion .newTabLink > a {
 	text-align: center;
-	height: 10px;
-	padding-left: 0;
-	padding-right: 0;
 	width: 42px;
+	
 }
-
-.t3ddy-accordion a.newLink:hover {
-	background-image: url('../Images/JQueryUI/ui-bg_glass_75_dadada_1x400.png');
-	border-color: #666;
-}
-
-.t3ddy-accordion a.newLink:hover span {
-	background-image: url('../Images/JQueryUI/ui-icons_222222_256x240.png');
-}
-
-.t3ddy-accordion a.newLink span {
-	margin: 0 0.5em;
+.t3ddy-accordion .newTabLink > a > span {
+	font-weight: bold !important;
+	font-size: 18px;
+	line-height: 1;
+	cursor: pointer !important;
 }
 
 .t3ddy-accordion div.clearRight {
@@ -34,6 +31,17 @@
 }
 
 
+.t3ddy-accordion .panel-heading {
+	padding: 0;
+}
+.t3ddy-accordion .panel-heading > h3 {
+	margin: 0;
+}
+.t3ddy-accordion .panel-heading > h3 > a {
+	padding: 10px;
+	display: block;
+	width: 100%;
+}
 
 .t3ddy-accordion h3.ui-accordion-header-active {
 	cursor: move;

@@ -61,6 +61,7 @@ class PageRenderer {
 	 */
 	public function addCssAndJs(array $parameters, \TYPO3\CMS\Core\Page\PageRenderer &$pageRenderer) {
 		if ($this->isPageModule()) {
+		
 			$this->initialize($pageRenderer);
 
 			$this->includeLibrariesAndGeneralFiles();
@@ -83,7 +84,7 @@ class PageRenderer {
 	protected function initialize($pageRenderer) {
 		$this->pageRenderer = $pageRenderer;
 		$this->extensionSettings = GeneralUtility::makeInstance('ArminVieweg\\T3ddy\\Utilities\\ExtensionSettings');
-		$this->resourcePath = '../../../' . ExtensionManagementUtility::extRelPath('t3ddy') . 'Resources/Public/';
+		$this->resourcePath = '/typo3conf/ext/t3ddy/Resources/Public/';
 	}
 
 	/**
@@ -92,8 +93,12 @@ class PageRenderer {
 	 * @return boolean TRUE if is page module, otherwise FALSE
 	 */
 	protected function isPageModule() {
-		return (array_key_exists('id', $_GET) && count($_GET) === 1)
-			|| (array_key_exists('id', $_GET) && count($_GET) === 2 && array_key_exists('SET', $_GET));
+		if(GeneralUtility::compat_version('7.0')){
+			return (array_key_exists('M', $_GET) && $_GET['M'] === 'web_layout');	
+		}else{
+			return (array_key_exists('id', $_GET) && count($_GET) === 1)
+				|| (array_key_exists('id', $_GET) && count($_GET) === 2 && array_key_exists('SET', $_GET));
+		}
 	}
 
 	/**
@@ -102,14 +107,55 @@ class PageRenderer {
 	 * @return void
 	 */
 	protected function includeLibrariesAndGeneralFiles() {
-		$this->pageRenderer->loadJquery();
-		$this->pageRenderer->addJsLibrary('jquery-cookie', $this->resourcePath . 'JavaScript/Libraries/jquery.cookie.js', 'text/javascript', FALSE, FALSE, '', TRUE);
-		$this->pageRenderer->addJsLibrary('jquery-ui', $this->resourcePath . 'JavaScript/Libraries/jquery-ui-1.11.1-custom.min.js', 'text/javascript', FALSE, FALSE, '', TRUE);
 
-		$this->pageRenderer->addJsFile($this->resourcePath . 'JavaScript/Backend/t3ddy.js', 'text/javascript');
+		$this->pageRenderer->loadJquery();	
+		
+		// jQuery UI: sortable		
+		$this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Backend/LayoutModule/DragDrop');
 
-		$this->pageRenderer->addCssFile($this->resourcePath . 'CSS/jquery-ui-1.11.1.min.css');
-		$this->pageRenderer->addCssFile($this->resourcePath . 'CSS/t3ddy.css');
+		// jQuery cookie
+		$this->pageRenderer->addJsLibrary(
+			'jquery-cookie', 
+			$this->resourcePath . 'JavaScript/Libraries/jquery.cookie.js', 
+			'text/javascript', 
+			FALSE, 
+			FALSE, 
+			'', 
+			TRUE
+		);
+
+		$this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Backend/LayoutModule/DragDrop');
+
+		$this->pageRenderer->addJsFooterFile(
+			$this->resourcePath . 'JavaScript/Backend/t3ddy.js', 
+			'text/javascript', 
+			false, 
+			false, 
+			'', 
+			true
+		);
+		
+		$this->pageRenderer->addCssFile(
+			$this->resourcePath . 'CSS/jquery-ui-1.11.1.min.css',
+			'stylesheet',
+			'all', // media
+			'', // title 
+			false, // compress
+			false, // forcetop
+			'', // allWrap
+			false //excludeFromConcatenation
+		);
+		
+		$this->pageRenderer->addCssFile(
+			$this->resourcePath . 'CSS/t3ddy.css',
+			'stylesheet',
+			'all', // media
+			'', // title 
+			false, // compress
+			false, // forcetop
+			'', // allWrap
+			false //excludeFromConcatenation
+		);
 	}
 
 	/**
@@ -118,7 +164,16 @@ class PageRenderer {
 	 * @return void
 	 */
 	protected function includeTabContainerFiles() {
-		$this->pageRenderer->addCssFile($this->resourcePath . 'CSS/t3ddy-tab-container.css');
+		$this->pageRenderer->addCssFile(
+			$this->resourcePath . 'CSS/t3ddy-tab-container.css', 
+			'stylesheet',
+			'all', // media
+			'', // title 
+			false, // compress
+			false, // forcetop
+			'', // allWrap
+			false //excludeFromConcatenation
+		);
 	}
 
 
@@ -128,7 +183,17 @@ class PageRenderer {
 	 * @return void
 	 */
 	protected function includeAccordionFiles() {
-		$this->pageRenderer->addCssFile($this->resourcePath . 'CSS/t3ddy-accordion.css');
+		$this->pageRenderer->addCssFile(
+			$this->resourcePath . 'CSS/t3ddy-accordion.css',
+			'stylesheet',
+			'all', // media
+			'', // title 
+			false, // compress
+			false, // forcetop
+			'', // allWrap
+			false //excludeFromConcatenation
+		);
+			
 	}
 
 }

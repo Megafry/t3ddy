@@ -1,30 +1,56 @@
-.t3ddy ul.ui-tabs-nav > li {
-	max-width: 120px;
-}
 
-.t3ddy ul.ui-tabs-nav > li a.ui-tabs-anchor {
+.t3ddy ul.nav-tabs > li > a {
 	text-overflow: ellipsis;
 	overflow: hidden;
-	max-width: 90px;
+	max-width: 100px;
 }
 
-.t3ddy ul.ui-tabs-nav > li.ui-tabs-active {
-	padding-right: 30px;
-}
-
-.t3ddy ul.ui-tabs-nav > li.ui-tabs-active a.ui-tabs-anchor {
+.t3ddy ul.nav-tabs > li.active > a {
 	cursor: move !important;
 }
 
-.t3-gridContainer-t3ddy-tab-container {
+.t3-grid-container-t3ddy-tab-container {
 	padding-top: 5px;
 }
 
 .t3ddy-tabs ul li.hidden {
 	border-style: dotted !important;
 }
-.t3ddy-tabs ul li.hidden a {
+.t3ddy-tabs ul li.hidden > a {
 	color: #bbb !important;
+}
+
+	
+.t3ddy-tabs ul li {
+	padding: 6px 6px 7px;
+	border: 1px solid #cccccc;
+    border-bottom-color: #fafafa;
+    background-color: #fafafa;
+}
+.t3ddy-tabs ul li.active {
+	border-color: #d7d7d7 #d7d7d7 #cccccc;
+	background: #e1e1e1;
+	padding-bottom: 0;
+}
+
+.t3ddy-tabs ul li > a {
+	display: inline;
+	border: 0 !important;
+    border-bottom-color: transparent !important;
+    background-color: transparent !important;
+}
+.t3ddy-tabs ul li .btn-group {
+	display: none;
+}
+.t3ddy-tabs ul li.active .btn-group {
+	display: inline-block;
+}
+
+.t3ddy-tabs ul li .btn {
+	border: 0;
+	box-shadow: none;
+	position: relative;
+	bottom: 1px;
 }
 
 .t3ddy-tabs ul li span.t3-icon-actions {
@@ -46,7 +72,7 @@
 	top: 6px;
 }
 
-.t3ddy-tabs ul li.ui-tabs-active span.t3-icon-actions-document {
+.t3ddy-tabs ul li.active span.t3-icon-actions-document {
 	right: 20px;
 }
 
@@ -57,20 +83,20 @@
 }
 
 .t3ddy-tabs ul li.newTabLink {
-	background: none !important;
-	border: none !important;
 	cursor: pointer !important;
+	padding-bottom: 4px !important;
+	padding-right: 1px;
+	padding-left: 1px;
 }
+
 .t3ddy-tabs ul li.newTabLink a {
 	font-weight: bold !important;
 	font-size: 18px;
-	line-height: 0.6em;
-	padding-left: 0.4em !important;
-	padding-right: 0.4em !important;
+	line-height: 1;
 	cursor: pointer !important;
 }
 
-.t3ddy-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+.t3ddy-tabs .ui-tabs .nav-tabs li.ui-tabs-active .ui-tabs-anchor {
 	cursor: move;
 }
 
