@@ -7,6 +7,19 @@
 	"license": [
 		"GPL-2.0+"
 	],
+	"authors": [
+	{
+		"name": "Armin Vieweg",
+		"email": "armin@v.ieweg.de",
+		"homepage": "http://www.v.ieweg.de",
+		"role": "Lead Developer"
+	},
+	{
+		"name": "Patrick Crausaz",
+		"homepage": "https://bitbucket.org/smallcephei/",
+		"role": "Developer"
+	}
+	],
 	"require": {
 	},
 	"autoload": {
