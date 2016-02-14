@@ -1,5 +1,6 @@
 .t3-grid-container-t3ddy-accordion {
 	padding-top: 5px;
+	margin: 0 !important;
 }
 .t3-grid-container-t3ddy-accordion .panel-group {
 	margin-bottom: 0;
@@ -30,15 +31,20 @@
 	font-size: 0;
 }
 
-
+.t3ddy-accordion .panel {
+	box-shadow: none !important;
+}
 .t3ddy-accordion .panel-heading {
 	padding: 0;
+	border: none;
+	background: transparent !important;
 }
 .t3ddy-accordion .panel-heading > h3 {
 	margin: 0;
+	font-size: 1em;
 }
 .t3ddy-accordion .panel-heading > h3 > a {
-	padding: 10px;
+	padding: 12px 10px;
 	display: block;
 	width: 100%;
 }
@@ -49,8 +55,26 @@
 .t3ddy-accordion h3 div.icons {
 	cursor: default;
 	position: absolute;
-	right: 10px;
-	top: 5px;
+	right: 6px;
+	top: 6px;
+}
+
+.t3ddy-accordion h3 a {
+	background: #eee;
+	border-bottom: 1px solid #ccc;
+}
+.t3ddy-accordion h3 > a:before {
+	content: "▼";
+	color: #666;
+	display: inline-block;
+	padding-right: 2px;
+}
+.t3ddy-accordion h3 > a.collapsed {
+	background: transparent;
+	border-bottom: none;
+}
+.t3ddy-accordion h3 > a.collapsed:before {
+	content: "►";
 }
 
 .t3ddy-accordion h3 div.icons a span.t3-icon-actions-document {
