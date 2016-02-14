@@ -47,6 +47,30 @@ tx_gridelements.setup.t3ddy-accordion {
 								</config>
 						</TCEforms>
 					</singlePageMode>
+					<heightStyle type="array">
+						<TCEforms type="array">
+							<label>LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.heightStyle</label>
+							<config type="array">
+								<type>select</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.heightStyle.auto</numIndex>
+										<numIndex index="1">height-style-auto</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.heightStyle.fill</numIndex>
+										<numIndex index="1">height-style-fill</numIndex>
+									</numIndex>
+
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.heightStyle.content</numIndex>
+										<numIndex index="1">height-style-content</numIndex>
+									</numIndex>
+								</items>
+								<default>height-style-auto</default>
+								</config>
+						</TCEforms>
+					</heightStyle>
 				</el>
 			</ROOT>
 		</T3DataStructure>

@@ -20,8 +20,16 @@
 
 		$('.t3ddy-accordion').each(function(){
 			var $accordionContainer = $(this);
+
+			var heightStyle = 'auto';
+			if ($accordionContainer.hasClass('height-style-fill')) {
+				heightStyle = 'fill';
+			} else if ($accordionContainer.hasClass('height-style-content')) {
+				heightStyle = 'content';
+			}
+
 			$accordionContainer.accordion({
-				heightStyle: 'content',
+				heightStyle: heightStyle,
 				collapsible: !$accordionContainer.hasClass('single-page-mode'),
 
 				beforeActivate: function(event, ui) {

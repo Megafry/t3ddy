@@ -17,4 +17,17 @@ tx_gridelements.setup.t3ddy-item {
 			}
 		}
 	}
+
+	flexformDS (
+		<T3DataStructure>
+			<meta>
+				<langDisable>1</langDisable>
+			</meta>
+			<ROOT type="array">
+				<type>array</type>
+				<el type="array">
+				</el>
+			</ROOT>
+		</T3DataStructure>
+	)
 }
