@@ -43,7 +43,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 			}
 
 			// Set generated uri to link tag
-			$container.find('.newTabLink a').attr('href', decodeURIComponent(response.link));	
+			$container.find('.newTabLink:first a').attr('href', decodeURIComponent(response.link));
 		});
 	};
 
