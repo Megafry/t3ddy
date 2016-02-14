@@ -1,21 +1,18 @@
 var jQuery = TYPO3.jQuery;
 
 require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, ui) {
-  	
+
 	var createNewItemLink = function($container, $items) {
-		
 		var originalNewLink = $container.find('> table .t3-page-ce-wrapper-new-ce:first a:first')
 			.attr('href')
 			.replace(/.*\?(.*)\'.*/g, '$1');
-		
+
+		// no t3ddy-items yet, create new item inside the $container
+		var lastItemId = 0;
 		if($items.length){
 			// create new item after last available tab / panel
-			lastItemId = $items.last().find('.t3-ctype-identifier').attr('id').replace('ce', '');	
-		}else{
-			// no t3ddy-items yet, create new item inside the $container
-			lastItemId = 0;
+			lastItemId = $items.last().find('.t3-ctype-identifier').attr('id').replace('ce', '');
 		}
-
 
 		var parts = originalNewLink.split('&');
 		var parameters = {};
@@ -23,7 +20,6 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 			var part = parts[i].split('=');
 			parameters[part[0]] = part[1];
 		}
-
 		var sysLanguageUid = parseInt(parameters.sys_language_uid);
 		if (isNaN(sysLanguageUid)) {
 			sysLanguageUid = 0;
@@ -51,14 +47,10 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 		});
 	};
 
-
-
 	$(function() {
-		
 		var $t3ddyContainers = $($('.t3-grid-container-t3ddy-accordion, .t3-grid-container-t3ddy-tab-container').get().reverse());
 		
 		$t3ddyContainers.each(function(){
-			
 			var $t3ddyContainer = $(this),
 				containerLevel = $(this).parents('.t3-grid-container-t3ddy-accordion, .t3-grid-container-t3ddy-tab-container').length,
 				containerIdentifier = $t3ddyContainer.closest('.exampleContent').prev('.t3-ctype-identifier').attr('id');
@@ -83,17 +75,16 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 			}
 
 			$containerId = $t3ddyContainers.parent('.exampleContent').prev().attr('id');
-			var $ul = $('<ul />').addClass('nav nav-tabs').attr('id', 't3ddy-container-'+$containerId).attr('role', 'tablist');
+			var $ul = $('<ul />').addClass('nav nav-tabs').attr('id', 't3ddy-container-' + $containerId).attr('role', 'tablist');
 
 			$items.each(function(i){
 				var $item = $(this);
 				var active = ((i === 0) ? ' active' : ''); // first active for tabs
-				var expanded = ((i === 0) ? true : false); // first active for accordeon
+				var expanded = i === 0; // first active for accordeon
 				var accordeonFirstActive = ((i === 0) ? ' in' : ''); // first active class for accordeon
 				var $parentItem = $item.closest('.t3-page-ce-body-inner-gridelements_pi1').find('.t3-ctype-identifier');
 				
 				if (containerLevel === $item.parents('.t3-grid-container-t3ddy-item').length) {
-					
 					$parentItem = $item.closest('.t3-page-ce-body-inner-gridelements_pi1').find('.t3-ctype-identifier');
 					if ($parentItem.length > 1) {
 						$parentItem = $parentItem.eq(0);
@@ -135,9 +126,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 						tabLink.appendTo(tabListItem);
 						toolbar.appendTo(tabListItem);
 						tabListItem.appendTo($ul);
-
 					} else {
-
 						var $icons = $('<div />').addClass('icons').append(toolbar);
 						$icons.find('a').click(function(event){
 							event.stopPropagation();
@@ -149,16 +138,16 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 							var $accordionGroup = $('<div />').addClass('panel panel-default');
 							
 							// BS acordeon item heading
-						 	$panelHeading = $('<div />')
+						 	var $panelHeading = $('<div />')
 						 		.addClass('panel-heading')
 						 		.attr('role', 'tab')
 						 		.attr('id', 'heading-'+itemIdentifier);
 
-							$heading = $('<h3 />')
+							var $heading = $('<h3 />')
 								.attr('title', itemTitle)
 								.addClass((isDisabled) ? 'hidden' : 'visible');
 
-							$headingLink = $('<a />')
+							var $headingLink = $('<a />')
 								.text(itemTitle)
 								.attr('title', 'id='+itemIdentifier.replace('ce', ''))
 								.addClass('panel-'+itemIdentifier)
@@ -170,7 +159,6 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 								.attr('aria-expanded', expanded)
 								.data('id', itemIdentifier)
 								.append($icons);
-
 
 							$headingLink.appendTo($heading);
 							$heading.appendTo($panelHeading);
@@ -194,10 +182,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				}
 			});
 
-			var lastTabUidInList = location.search.replace(/.*id=(\d*).*/g, '$1');
-
 			if ($container.hasClass('t3ddy-tabs')) {
-
 				var $newTabLinkTab = $('<li />').addClass('newTabLink');
 				var $newTabLink = $('<a />')
 					.text('+')
@@ -232,11 +217,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 
 			if ($container.hasClass('t3ddy-tabs')) {
 				$tabContent.appendTo($container);	
-			} 
 
-
-			if ($container.hasClass('t3ddy-tabs')) {
-				
 				// Add the built tab content to TYPO3 BE container
 				$container.prependTo($t3ddyContainer);
 				
@@ -245,7 +226,6 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 					$(this).data('originalIndex', i);
 				});
 
-				
 				// Activate last tab and set cookie of last activated tab
 				var lastActiveTab = $.cookie('t3ddyLastTab-' + containerIdentifier);
 				if(typeof lastActiveTab !== 'undefined'){
@@ -254,11 +234,9 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				}
 				// save last active tab
 				$container.on('shown.bs.tab', function (e) {
-					activateTab = e.target.className.replace('tab-ce', '');
+					var activateTab = e.target.className.replace('tab-ce', '');
 					$.cookie('t3ddyLastTab-' + containerIdentifier, activateTab);
 				});
-				
-
 
 				// Make tabs sortable
 				$container.find('ul').sortable({
@@ -289,9 +267,6 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 			}
 
 			if ($container.hasClass('t3ddy-accordion')) {
-				
-				
-				
 				// Add the built accordeon content to TYPO3 BE container
 				$container.prependTo($t3ddyContainer);
 				
@@ -315,8 +290,6 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 
 				$('<div />').addClass('clearRight').appendTo($container);
 
-				
-
 				// Activate last accordion panel and set cookie of last activated panel
 				var lastActivePanel = $.cookie('t3ddyLastPanel-' + containerIdentifier);
 				if(typeof lastActivePanel !== 'undefined'){
@@ -326,10 +299,9 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				}
 				// save last active tab
 				$container.on('shown.bs.collapse', function (e) {
-					activatePanel = e.target.id.replace('t3ddy-accordion-ce', '');
+					var activatePanel = e.target.id.replace('t3ddy-accordion-ce', '');
 					$.cookie('t3ddyLastPanel-' + containerIdentifier, activatePanel);
 				});
-
 
 
 				// Make accordion pages sortable
