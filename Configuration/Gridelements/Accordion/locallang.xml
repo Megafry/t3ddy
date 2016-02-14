@@ -8,10 +8,16 @@
 		<languageKey index="default" type="array">
 			<label index="title">Accordion</label>
 			<label index="description">Accordion container with arbitrary amount of pages.</label>
+			<label index="option.singlePageMode">Single Page Mode: When checked, in accordions only one page can be opened at once.</label>
+			<label index="option.on">On</label>
+			<label index="option.off">Off</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="title">Akkordion</label>
 			<label index="description">Akkordion-Container mit belieber Anzahl von Seiten.</label>
+			<label index="option.singlePageMode">Einzel-Seiten-Modus: Wenn aktiv, wird Akkordien immer nur eine Seite gleichzeitig geöffnet.</label>
+			<label index="option.on">An</label>
+			<label index="option.off">Aus</label>
 		</languageKey>
 	</data>
 </T3locallang>
