@@ -15,11 +15,6 @@ if (TYPO3_MODE === 'BE') {
         'T3ddy::buildCreateNewItemLink',
         'ArminVieweg\\T3ddy\\Ajax\\LinkBuilder->createNewItemLink'
 	);
-
-		// Wizard XClass
-	$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['GridElementsTeam\\Gridelements\\Hooks\\WizardItems'] = array(
-		'className' => 'ArminVieweg\\T3ddy\\XClasses\\WizardItems',
-	);
 }
 
 /** @var \ArminVieweg\T3ddy\Utilities\ExtensionSettings $extensionSettings */
