@@ -42,3 +42,9 @@ if ($extensionSettings->isAccordionEnabled() || $extensionSettings->isTabContain
 		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/Gridelements/Item/tsconfig.ts'
 	));
 }
+
+if ($extensionSettings->disableGridElementsChildrenInT3ddyItem()) {
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
+		TCEFORM.tt_content.tx_gridelements_children.types.gridelements_pi1.disabled = 1
+	');
+}

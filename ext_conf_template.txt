@@ -6,3 +6,6 @@ disableAccordion = 0
 
 # cat=general/basic; type=boolean; label=Show t3ddy grids in own group: If enabled, t3ddy tab and accordion grid will be displayed in a new "t3ddy" group in content element wizard.
 showT3ddyGridsInNewGroup = 1
+
+# cat=general/basic; type=boolean; label=Disable gridelement-children in t3ddy item: If enabled, t3ddy item properties does not how gridelements children (content elements)
+disableGridElementsChildrenInT3ddyItem = 1

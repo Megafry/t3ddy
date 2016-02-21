@@ -77,4 +77,13 @@ class ExtensionSettings implements \TYPO3\CMS\Core\SingletonInterface {
 		return (boolean) $this->settings['showT3ddyGridsInNewGroup'];
 	}
 
+	/**
+	 * Returns value of setting "disableGridElementsChildrenInT3ddyItem"
+	 *
+	 * @return bool
+	 */
+	public function disableGridElementsChildrenInT3ddyItem() {
+		return (bool) $this->settings['disableGridElementsChildrenInT3ddyItem'];
+	}
+
 }
