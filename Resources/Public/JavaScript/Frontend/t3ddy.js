@@ -1,5 +1,13 @@
-(function($, undefined) {
+(function($) {
 	$(function() {
+		function getActiveItemIndex($container){
+			var activeItemIndex = 0;
+			if ($container.find('.t3ddy-item.focus').length > 0) {
+				activeItemIndex = $container.find('.t3ddy-item').index($container.find('.t3ddy-item.focus').eq(0));
+			}
+			return activeItemIndex;
+		}
+
 		$('.t3ddy-tabContainer').each(function(){
 			var $tabContainer = $(this);
 			var $tabs = $tabContainer.find('>ul > li');
@@ -15,8 +23,11 @@
 				$link.attr('href', newLink);
 			});
 
-			$tabContainer.tabs();
+			$tabContainer.tabs({
+				active: getActiveItemIndex($tabContainer)
+			});
 		});
+
 
 		$('.t3ddy-accordion').each(function(){
 			var $accordionContainer = $(this);
@@ -29,6 +40,7 @@
 			}
 
 			$accordionContainer.accordion({
+				active: getActiveItemIndex($accordionContainer),
 				heightStyle: heightStyle,
 				collapsible: !$accordionContainer.hasClass('single-page-mode'),
 

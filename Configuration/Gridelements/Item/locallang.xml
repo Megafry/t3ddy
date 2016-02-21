@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for grid elements</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title">T3ddy Item</label>
+			<label index="description">A single tab in a tab container or a single page in an accordion.</label>
+			<label index="column.contentElements">Content Elements</label>
+			<label index="option.focus">Focus: When checked, this item opens in frontend per default instead of the first item. Don't forget to remove this option from other items!</label>
+			<label index="option.on">On</label>
+			<label index="option.off">Off</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="title">T3ddy Element</label>
+			<label index="description">Ein einfacher Reiter in einem Tab-Container oder eine einfache Seite in einem Akkordion.</label>
+			<label index="column.contentElements">Inhaltselemente</label>
+			<label index="option.focus">Fokus: Wenn angehakt, wird dieses Element im Frontend geöffnet dargestellt, statt dem ersten Element. Nicht vergessen die Option bei anderen Elementen zu entfernen!</label>
+			<label index="option.on">An</label>
+			<label index="option.off">Aus</label>
+		</languageKey>
+	</data>
+</T3locallang>
