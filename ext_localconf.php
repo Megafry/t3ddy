@@ -23,7 +23,9 @@ if (TYPO3_MODE === 'BE') {
 }
 
 /** @var \ArminVieweg\T3ddy\Utilities\ExtensionSettings $extensionSettings */
-$extensionSettings = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('ArminVieweg\\T3ddy\\Utilities\\ExtensionSettings');
+$extensionSettings = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+	'ArminVieweg\\T3ddy\\Utilities\\ExtensionSettings'
+);
 
 if ($extensionSettings->isTabContainerEnabled()) {
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(file_get_contents(

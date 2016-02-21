@@ -8,7 +8,6 @@ namespace ArminVieweg\T3ddy\Hooks;
  */
 use ArminVieweg\T3ddy\Utilities\DatabaseUtility;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * AfterSave Hook
