@@ -48,3 +48,9 @@ if ($extensionSettings->disableGridElementsChildrenInT3ddyItem()) {
 		TCEFORM.tt_content.tx_gridelements_children.types.gridelements_pi1.disabled = 1
 	');
 }
+
+if ($extensionSettings->createFirstT3ddyItem()) {
+	// AfterSave hook
+	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass']['t3ddy'] =
+		'ArminVieweg\\T3ddy\\Hooks\\AfterSaveHook';
+}

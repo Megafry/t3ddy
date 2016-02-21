@@ -86,4 +86,13 @@ class ExtensionSettings implements \TYPO3\CMS\Core\SingletonInterface {
 		return (bool) $this->settings['disableGridElementsChildrenInT3ddyItem'];
 	}
 
+	/**
+	 * Returns value of setting "createFirstT3ddyItem"
+	 *
+	 * @return bool
+	 */
+	public function createFirstT3ddyItem() {
+		return (bool) $this->settings['createFirstT3ddyItem'];
+	}
+
 }
