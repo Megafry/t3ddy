@@ -136,7 +136,7 @@ class PageRenderer {
 		);
 		
 		$this->pageRenderer->addCssFile(
-			$this->resourcePath . 'CSS/jquery-ui-1.11.1.min.css',
+			$this->resourcePath . 'CSS/jquery-ui-1.11.4.min.css',
 			'stylesheet',
 			'all', // media
 			'', // title 

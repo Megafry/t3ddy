@@ -278,7 +278,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				// New link of accordeon
 				var newTabLinkWrap = $('<div />').addClass('newTabLink');
 				var newTabLinkLink = $('<a />')
-					.addClass('btn btn-default')
+					.addClass('btn btn-success')
 					.attr('title', TYPO3.l10n.localize('newContentElement')[0].target)
 					.append(
 						$('<span />').text('+')
