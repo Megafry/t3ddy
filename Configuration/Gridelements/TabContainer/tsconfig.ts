@@ -15,6 +15,7 @@ tx_gridelements.setup.t3ddy-tab-container {
 						colspan = 1
 						colPos = 31337
 						allowed = gridelements_pi1
+						allowedGridTypes = t3ddy-item
 					}
 				}
 			}
