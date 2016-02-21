@@ -5,6 +5,11 @@
 			if ($container.find('.t3ddy-item.focus').length > 0) {
 				activeItemIndex = $container.find('.t3ddy-item').index($container.find('.t3ddy-item.focus').eq(0));
 			}
+			if (location.hash) {
+				var $anchoredContentElement = $container.find(location.hash);
+				var parentT3ddyItem = $anchoredContentElement.closest('.t3ddy-item');
+				activeItemIndex = $container.find('.t3ddy-item').index(parentT3ddyItem);
+			}
 			return activeItemIndex;
 		}
 
