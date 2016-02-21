@@ -14,7 +14,6 @@ tx_gridelements.setup.t3ddy-item {
 						name = LLL:EXT:t3ddy/Configuration/Gridelements/Item/locallang.xml:column.contentElements
 						colspan = 1
 						colPos = 31338
-						allowed = *
 					}
 				}
 			}
