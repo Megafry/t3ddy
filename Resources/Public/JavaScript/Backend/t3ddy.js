@@ -186,7 +186,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				var $newTabLinkTab = $('<li />').addClass('newTabLink');
 				var $newTabLink = $('<a />')
 					.text('+')
-					.attr('title', TYPO3.l10n.localize('newContentElement')[0].target)
+					.attr('title', TYPO3.l10n.localize('newContentElement'))
 					.appendTo($newTabLinkTab);
 
 				createNewItemLink($t3ddyContainer, $items, $newTabLink);
@@ -279,7 +279,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				var newTabLinkWrap = $('<div />').addClass('newTabLink');
 				var newTabLinkLink = $('<a />')
 					.addClass('btn btn-success')
-					.attr('title', TYPO3.l10n.localize('newContentElement')[0].target)
+					.attr('title', TYPO3.l10n.localize('newContentElement'))
 					.append(
 						$('<span />').text('+')
 					);
