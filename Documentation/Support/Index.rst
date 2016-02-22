@@ -15,7 +15,7 @@ Bug tracker
 t3ddy has a project on `TYPO3 forge <https://forge.typo3.org/projects/extension-t3ddy/issues>`_,
 where you can report bugs, submit feature requests or ask requests (as support ticket).
 
-Also you will find the code in `TYPO3 SVN <https://svn.typo3.org/TYPO3v4/Extensions/t3ddy/>`_, if you want to participate.
+Also you will find the code on `Bitbucket <https://bitbucket.org/ArminVieweg/t3ddy/>`_, if you want to participate.
 
 
 

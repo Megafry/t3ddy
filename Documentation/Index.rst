@@ -30,7 +30,7 @@ t3ddy - Super cute tabs and accordions
 		gridelements,tabs,accordions
 
 	:Copyright:
-		2014-2015
+		2014-2016
 
 	:Author:
 		Armin Ruediger Vieweg

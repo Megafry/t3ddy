@@ -68,5 +68,11 @@ t3ddy also provide three options in extension manager:
 +---------------------------------+-----------+----------+-------------------------------------------------------------------------------------------------------------------------+
 | Disable t3ddy accordion         | boolean   | 0        | If checked, accordion container grid is not available.                                                                  |
 +---------------------------------+-----------+----------+-------------------------------------------------------------------------------------------------------------------------+
-| Show t3ddy grids in own group   | boolean   | 1        | If enabled, t3ddy tab and accordion container grid will be displayed in a new "t3ddy" group in content element wizard.   |
+| Show t3ddy grids in own group   | boolean   | 1        | If enabled, t3ddy tab and accordion container grid will be displayed in a new "t3ddy" group in content element wizard.  |
++---------------------------------+-----------+----------+-------------------------------------------------------------------------------------------------------------------------+
+| Disable gridelement-children    | boolean   | 1        | If enabled, t3ddy item properties does not how gridelements children (content elements).                                |
++---------------------------------+-----------+----------+-------------------------------------------------------------------------------------------------------------------------+
+| Create first t3ddy item         | boolean   | 1        | If enabled, an after-save hook creates the first t3ddy item of a container, when the container is created.              |
+|                                 |           |          | You can set the "header" value of the created item in PageTS with:                                                      |
+|                                 |           |          | tx_t3ddy.defaults.newT3ddyItemTitle = Another New Item Title                                                            |
 +---------------------------------+-----------+----------+-------------------------------------------------------------------------------------------------------------------------+
