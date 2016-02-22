@@ -135,7 +135,8 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 						if (itemTitle && $item.parents('.accordionContents').length === 0) {
 							
 							// BS accordeon item wrap
-							var $accordionGroup = $('<div />').addClass('panel panel-default');
+							var $accordionGroup = $('<div />')
+								.addClass('panel panel-default');
 							
 							// BS acordeon item heading
 						 	var $panelHeading = $('<div />')
@@ -166,17 +167,21 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 
 							// BS accordeon item body
 							$bodyOuter = $('<div />')
-								.addClass('panel-collapse collapse' + accordeonFirstActive)
+								.addClass('t3js-page-ce panel-collapse collapse' + accordeonFirstActive)
+								.attr('data-uid', itemIdentifier.replace('ce', ''))
 								.attr('id', 't3ddy-accordion-' + itemIdentifier)
 								.attr('role', 'tabpanel')
 								.attr('aria-labelledby', 'heading-'+itemIdentifier)
 								.append($item.find('table.t3-grid-table').not('.normalGrid').not('.accordionContents').not('.tabContents').addClass('accordionContents'));
-
+							
 							$bodyInner = $('<div />').addClass('panel-body');
 
 							$bodyInner.appendTo($bodyOuter);
 							$bodyOuter.appendTo($accordionGroup);
 							$accordionGroup.appendTo($container);
+
+							// selectors for gridelements Drag & Drop actions
+							$bodyOuter.wrapInner( "<div class='t3-grid-element-container'></div>");
 						}
 					}
 				}
@@ -212,6 +217,11 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 						.addClass('tab-pane' + active)
 						.append($item.find('table.t3-grid-table').not('.normalGrid').not('.tabContents').not('.accordionContents').addClass('tabContents'));
 					$tabContent.append($panelWrap);
+					
+					// selectors for gridelements Drag & Drop actions
+					$panelWrap
+						.wrapInner('<div class="t3-grid-element-container"></div>')
+						.wrapInner('<div class="t3js-page-ce" data-uid="'+tabIdentifier.replace('ce','')+'"></div>');
 				}
 			});
 
