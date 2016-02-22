@@ -9,7 +9,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 
 		// no t3ddy-items yet, create new item inside the $container
 		var lastItemId = 0;
-		if($items.length){
+		if ($items.length) {
 			// create new item after last available tab / panel
 			lastItemId = $items.last().find('.t3-ctype-identifier').attr('id').replace('ce', '');
 		}
@@ -25,7 +25,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 			sysLanguageUid = 0;
 		}
 
-		$.post( TYPO3.settings.ajaxUrls['T3ddy::buildCreateNewItemLink'] , {
+		$.post(TYPO3.settings.ajaxUrls['T3ddy::buildCreateNewItemLink'], {
 			t3ddy: {
 				pid: parameters.id,
 				colPos: parameters.colPos,
@@ -35,7 +35,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				lastItemId: lastItemId,
 				returnUrl: decodeURIComponent(parameters.returnUrl)
 			}
-		}, function(response){
+		}, function(response) {
 			response = $.parseJSON(response);
 			
 			if (response.status === 'error') {
@@ -55,7 +55,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				containerLevel = $(this).parents('.t3-grid-container-t3ddy-accordion, .t3-grid-container-t3ddy-tab-container').length,
 				containerIdentifier = $t3ddyContainer.closest('.exampleContent').prev('.t3-ctype-identifier').attr('id');
 
-				// All items includes also items from nested containers!
+			// All items includes also items from nested containers!
 			var $items = $(this).find('> .t3-grid-table .t3-page-ce-wrapper .t3-page-ce .t3-page-ce-body .t3-page-ce-body-inner-gridelements_pi1');
 			$items.each(function(){
 				if (!$(this).find('.t3-grid-container:first').hasClass('t3-grid-container-t3ddy-item')) {
@@ -74,15 +74,15 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 					.attr('aria-multiselectable', 'true');
 			}
 
-			$containerId = $t3ddyContainers.parent('.exampleContent').prev().attr('id');
+			var $containerId = $t3ddyContainers.parent('.exampleContent').prev().attr('id');
 			var $ul = $('<ul />').addClass('nav nav-tabs').attr('id', 't3ddy-container-' + $containerId).attr('role', 'tablist');
 
-			$items.each(function(i){
-				var $item = $(this);
-				var active = ((i === 0) ? ' active' : ''); // first active for tabs
-				var expanded = i === 0; // first active for accordeon
-				var accordeonFirstActive = ((i === 0) ? ' in' : ''); // first active class for accordeon
-				var $parentItem = $item.closest('.t3-page-ce-body-inner-gridelements_pi1').find('.t3-ctype-identifier');
+			$items.each(function(i) {
+				var $item = $(this),
+					active = ((i === 0) ? ' active' : ''), // first active for tabs
+					expanded = i === 0, // first active for accordeon
+					accordeonFirstActive = ((i === 0) ? ' in' : ''), // first active class for accordeon
+					$parentItem = $item.closest('.t3-page-ce-body-inner-gridelements_pi1').find('.t3-ctype-identifier');
 				
 				if (containerLevel === $item.parents('.t3-grid-container-t3ddy-item').length) {
 					$parentItem = $item.closest('.t3-page-ce-body-inner-gridelements_pi1').find('.t3-ctype-identifier');
@@ -104,9 +104,9 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 						.wrap('<div class="btn btn-default"></div>');
 					var toolbar = $('<div />')
 						.addClass('btn-group btn-group-sm');
+
 					editIcon.appendTo(toolbar);
 					deleteIcon.appendTo(toolbar);
-
 
 					if ($container.hasClass('t3ddy-tabs')) {
 						var tabListItem = $('<li />')
@@ -133,16 +133,15 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 						});
 
 						if (itemTitle && $item.parents('.accordionContents').length === 0) {
-							
-							// BS accordeon item wrap
+							// BS accordion item wrap
 							var $accordionGroup = $('<div />')
 								.addClass('panel panel-default');
-							
-							// BS acordeon item heading
+
+							// BS accordion item heading
 						 	var $panelHeading = $('<div />')
 						 		.addClass('panel-heading')
 						 		.attr('role', 'tab')
-						 		.attr('id', 'heading-'+itemIdentifier);
+						 		.attr('id', 'heading-' + itemIdentifier);
 
 							var $heading = $('<h3 />')
 								.attr('title', itemTitle)
@@ -165,16 +164,16 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 							$heading.appendTo($panelHeading);
 							$panelHeading.appendTo($accordionGroup);
 
-							// BS accordeon item body
-							$bodyOuter = $('<div />')
+							// BS accordion item body
+							var $bodyOuter = $('<div />')
 								.addClass('t3js-page-ce panel-collapse collapse' + accordeonFirstActive)
 								.attr('data-uid', itemIdentifier.replace('ce', ''))
 								.attr('id', 't3ddy-accordion-' + itemIdentifier)
 								.attr('role', 'tabpanel')
 								.attr('aria-labelledby', 'heading-'+itemIdentifier)
 								.append($item.find('table.t3-grid-table').not('.normalGrid').not('.accordionContents').not('.tabContents').addClass('accordionContents'));
-							
-							$bodyInner = $('<div />').addClass('panel-body');
+
+							var $bodyInner = $('<div />').addClass('panel-body');
 
 							$bodyInner.appendTo($bodyOuter);
 							$bodyOuter.appendTo($accordionGroup);
@@ -200,24 +199,23 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				$ul.prependTo($container);
 			}
 
-			$tabContent = $('<div />').addClass('tab-content');
+			var $tabContent = $('<div />').addClass('tab-content');
 
 			$items.each(function(i){
 				var $item = $(this);
 				if ($container.hasClass('t3ddy-tabs') && containerLevel === $item.parents('.t3-grid-container-t3ddy-item').length) {
 						// Build tab container
-					$parentItem = $item.closest('.t3-page-ce-body-inner-gridelements_pi1').find('.t3-ctype-identifier');
+					var $parentItem = $item.closest('.t3-page-ce-body-inner-gridelements_pi1').find('.t3-ctype-identifier');
 					var tabIdentifier = $parentItem.attr('id');
-
 					var active = ((i === 0) ? ' active' : '');
-					
-					$panelWrap = $('<div />')
+					var $panelWrap = $('<div />')
 						.attr('id', 't3ddy-tab-' + tabIdentifier)
 						.attr('role', 'tabpanel')
 						.addClass('tab-pane' + active)
 						.append($item.find('table.t3-grid-table').not('.normalGrid').not('.tabContents').not('.accordionContents').addClass('tabContents'));
+
 					$tabContent.append($panelWrap);
-					
+
 					// selectors for gridelements Drag & Drop actions
 					$panelWrap
 						.wrapInner('<div class="t3-grid-element-container"></div>')
@@ -230,7 +228,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 
 				// Add the built tab content to TYPO3 BE container
 				$container.prependTo($t3ddyContainer);
-				
+
 				// Set original index data to each tab
 				$('> ul.nav-tabs li', $container).each(function(i){
 					$(this).data('originalIndex', i);
@@ -256,7 +254,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 					stop: function(event, ui) {
 						var newIndex = ui.item.index();
 						var difference = newIndex - parseInt(ui.item.data('originalIndex'));
-						
+
 						if (difference !== 0) {
 							ui.item.data('originalIndex', ui.item.data('originalIndex') + difference);
 
@@ -279,12 +277,12 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 			if ($container.hasClass('t3ddy-accordion')) {
 				// Add the built accordeon content to TYPO3 BE container
 				$container.prependTo($t3ddyContainer);
-				
+
 				// Set original index data to each tab
 				$('> div.panel', $container).each(function(i){
 					$(this).data('originalIndex', i);
 				});
-				
+
 				// New link of accordeon
 				var newTabLinkWrap = $('<div />').addClass('newTabLink');
 				var newTabLinkLink = $('<a />')
@@ -321,7 +319,6 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 					delay: 150,
 					items: '.panel:not(.newTabLink)',
 					stop: function(event, ui) {
-						
 						var newIndex = ui.item.index();
 						var difference = newIndex - parseInt(ui.item.data('originalIndex'));
 
@@ -332,7 +329,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 									tabUid: $(ui.item).find('div.panel-heading').attr('id').replace(/heading\-ce(.*)/g, '$1'),
 									difference: difference
 								}
-							}, function(response){
+							}, function(response) {
 								response = $.parseJSON(response);
 								if (response.status === 'error') {
 									alert('Error while changing sorting. Please refresh page and try again.');
