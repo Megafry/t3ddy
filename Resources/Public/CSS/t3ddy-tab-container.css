@@ -126,3 +126,8 @@
 .t3ddy-tabs .ui-tabs-panel {
 	padding: 0 !important;
 }
+
+.t3-grid-container-t3ddy-tab-container .btn-default {
+	background-color: transparent !important;
+	border-color: transparent !important;
+}
