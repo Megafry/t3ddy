@@ -35,7 +35,7 @@ tx_gridelements.setup.t3ddy-accordion {
 								<items type="array">
 									<numIndex index="0" type="array">
 										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.off</numIndex>
-										<numIndex index="1"></numIndex>
+										<numIndex index="1">multi-page-mode</numIndex>
 									</numIndex>
 									<numIndex index="1" type="array">
 										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.on</numIndex>
@@ -43,7 +43,7 @@ tx_gridelements.setup.t3ddy-accordion {
 									</numIndex>
 								</items>
 								<default>single-page-mode</default>
-								</config>
+							</config>
 						</TCEforms>
 					</singlePageMode>
 					<heightStyle type="array">
@@ -67,7 +67,7 @@ tx_gridelements.setup.t3ddy-accordion {
 									</numIndex>
 								</items>
 								<default>height-style-auto</default>
-								</config>
+							</config>
 						</TCEforms>
 					</heightStyle>
 				</el>

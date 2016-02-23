@@ -43,7 +43,7 @@ tx_gridelements.setup.t3ddy-item {
 									</numIndex>
 								</items>
 								<default></default>
-								</config>
+							</config>
 						</TCEforms>
 					</focus>
 				</el>
