@@ -38,7 +38,7 @@
 .t3ddy-tabs ul li.active {
 	opacity: 1;
 	position: relative;
-	z-index: 999;
+	z-index: 200;
 	border-color: #ccc #ccc #fff;
 	background: #fff;
 	padding-bottom: 0;

@@ -64,17 +64,27 @@
 	border-bottom: 1px solid #ccc;
 }
 .t3ddy-accordion h3 > a:before {
-	content: "▼";
-	color: #666;
+	content: " ";
+	background-image:url("../Images/JQueryUI/ui-icons_222222_256x240.png");
+	background-position: -64px 0;
+	width:16px;
+	height:16px;
 	display: inline-block;
-	padding-right: 2px;
+	vertical-align: text-bottom;
+	opacity: 0.6;
 }
 .t3ddy-accordion h3 > a.collapsed {
 	background: transparent;
 	border-bottom: none;
 }
 .t3ddy-accordion h3 > a.collapsed:before {
-	content: "►";
+	content: " ";
+	background-image:url("../Images/JQueryUI/ui-icons_222222_256x240.png");
+	background-position: -32px 0;
+	vertical-align: text-bottom;
+	width:16px;
+	height:16px;
+	opacity: 0.6;
 }
 
 .t3ddy-accordion h3 div.icons a span.t3-icon-actions-document {
