@@ -7,6 +7,7 @@ namespace ArminVieweg\T3ddy\Hooks;
  *  | (c) 2014-2016 Armin Ruediger Vieweg <armin@v.ieweg.de>
  */
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -65,7 +66,7 @@ class PageRenderer
     {
         $this->pageRenderer = $pageRenderer;
         $this->extensionSettings = GeneralUtility::makeInstance('ArminVieweg\\T3ddy\\Utilities\\ExtensionSettings');
-        $this->resourcePath = '/typo3conf/ext/t3ddy/Resources/Public/';
+        $this->resourcePath = ExtensionManagementUtility::extRelPath('t3ddy') . '/Resources/Public/';
     }
 
     /**
