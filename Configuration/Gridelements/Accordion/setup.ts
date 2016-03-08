@@ -14,6 +14,6 @@ tt_content.gridelements_pi1.20.10.setup.t3ddy-accordion {
 			}
 		}
 	}
-	dataWrap = <div class="t3ddy t3ddy-accordion {field:flexform_singlePageMode} {field:flexform_heightStyle}">|</div>
+	dataWrap = <div class="t3ddy t3ddy-accordion {field:flexform_singlePageMode} {field:flexform_heightStyle} {field:flexform_leaveAllItemsClosed}">|</div>
 	prepend < lib.stdheader
 }

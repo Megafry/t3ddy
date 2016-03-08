@@ -46,6 +46,25 @@ tx_gridelements.setup.t3ddy-accordion {
 							</config>
 						</TCEforms>
 					</singlePageMode>
+					<leaveAllItemsClosed type="array">
+						<TCEforms type="array">
+							<label>LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.leaveAllItemsClosed</label>
+							<config type="array">
+								<type>select</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.off</numIndex>
+										<numIndex index="1">respect-set-focus</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.on</numIndex>
+										<numIndex index="1">leave-all-items-closed</numIndex>
+									</numIndex>
+								</items>
+								<default>respect-set-focus</default>
+							</config>
+						</TCEforms>
+					</leaveAllItemsClosed>
 					<heightStyle type="array">
 						<TCEforms type="array">
 							<label>LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.heightStyle</label>

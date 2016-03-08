@@ -1,6 +1,6 @@
 (function($) {
 	$(function() {
-		function getActiveItemIndex($container){
+		function getActiveItemIndex($container) {
 			var activeItemIndex = 0;
 			if ($container.find('.t3ddy-item.focus').length > 0) {
 				activeItemIndex = $container.find('.t3ddy-item').index($container.find('.t3ddy-item.focus').eq(0));
@@ -10,10 +10,13 @@
 				var parentT3ddyItem = $anchoredContentElement.closest('.t3ddy-item');
 				activeItemIndex = $container.find('.t3ddy-item').index(parentT3ddyItem);
 			}
+			if ($container.hasClass('leave-all-items-closed')) {
+				activeItemIndex = true;
+			}
 			return activeItemIndex;
 		}
 
-		$('.t3ddy-tabContainer').each(function(){
+		$('.t3ddy-tabContainer').each(function() {
 			var $tabContainer = $(this);
 			var $tabs = $tabContainer.find('>ul > li');
 			$tabs.each(function(){
@@ -34,7 +37,7 @@
 		});
 
 
-		$('.t3ddy-accordion').each(function(){
+		$('.t3ddy-accordion').each(function() {
 			var $accordionContainer = $(this);
 
 			var heightStyle = 'auto';
