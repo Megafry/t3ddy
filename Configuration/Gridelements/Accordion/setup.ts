@@ -10,10 +10,10 @@ tt_content.gridelements_pi1.20.10.setup.t3ddy-accordion {
 				}
 
 				20 =< tt_content
-				20.stdWrap.dataWrap = <div class="t3ddy-item t3ddy-accordion-item" id="c{field:uid}">|</div>
+				20.stdWrap.dataWrap = <div class="t3ddy-item t3ddy-accordion-item {field:flexform_focus}" id="c{field:uid}">|</div>
 			}
 		}
 	}
-	wrap = <div class="t3ddy t3ddy-accordion">|</div>
+	dataWrap = <div class="t3ddy t3ddy-accordion {field:flexform_singlePageMode} {field:flexform_heightStyle} {field:flexform_leaveAllItemsClosed}">|</div>
 	prepend < lib.stdheader
 }

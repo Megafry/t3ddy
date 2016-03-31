@@ -1,17 +1,17 @@
 /*!
- * jQuery Cookie Plugin v1.4.1
- * https://github.com/carhartl/jquery-cookie
- *
- * Copyright 2013 Klaus Hartl
- * Released under the MIT license
- */
-var jQuery = jQuery || TYPO3.jQuery;
+* jQuery Cookie Plugin v1.4.1
+* https://github.com/carhartl/jquery-cookie
+*
+* Copyright 2013 Klaus Hartl
+* Released under the MIT license
+*/
 (function (factory) {
 
 
 	if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(['jquery'], factory);
+		define('jquery.cookie',['jquery'], factory);
+		//define(['jquery'], factory);
 	} else if (typeof exports === 'object') {
 		// CommonJS
 		factory(require('jquery'));
@@ -20,7 +20,6 @@ var jQuery = jQuery || TYPO3.jQuery;
 		factory(jQuery);
 	}
 }(function ($) {
-
 	var pluses = /\+/g;
 
 	function encode(s) {

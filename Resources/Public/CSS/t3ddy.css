@@ -6,3 +6,7 @@
 .t3ddy .t3-page-column-31338 {
 	border-top: 1px solid #cdcdcd;
 }
+
+.t3ddy-accordion-header {
+	outline: none;
+}

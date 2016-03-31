@@ -1,30 +1,78 @@
-.t3ddy ul.ui-tabs-nav > li {
-	max-width: 120px;
-}
-
-.t3ddy ul.ui-tabs-nav > li a.ui-tabs-anchor {
+.t3ddy ul.nav-tabs > li > a {
 	text-overflow: ellipsis;
 	overflow: hidden;
-	max-width: 90px;
+	max-width: 100px;
 }
 
-.t3ddy ul.ui-tabs-nav > li.ui-tabs-active {
-	padding-right: 30px;
-}
-
-.t3ddy ul.ui-tabs-nav > li.ui-tabs-active a.ui-tabs-anchor {
+.t3ddy ul.nav-tabs > li.active > a {
 	cursor: move !important;
 }
 
-.t3-gridContainer-t3ddy-tab-container {
+.t3-grid-container-t3ddy-tab-container {
 	padding-top: 5px;
+	margin: 0 !important;
 }
 
 .t3ddy-tabs ul li.hidden {
 	border-style: dotted !important;
 }
-.t3ddy-tabs ul li.hidden a {
+.t3ddy-tabs ul li.hidden > a {
 	color: #bbb !important;
+}
+
+.t3ddy-tabs ul {
+	background: none !important;
+	padding-left: 10px;
+}
+.t3ddy-tabs ul li {
+	position: relative;
+	padding: 6px 6px 7px;
+	border: 1px solid #ccc;
+	border-bottom: none;
+	line-height: 1.6;
+	opacity: 0.7;
+}
+.t3ddy-tabs ul li:hover {
+	opacity: 1;
+}
+.t3ddy-tabs ul li.active {
+	opacity: 1;
+	position: relative;
+	z-index: 200;
+	border-color: #ccc #ccc #fff;
+	background: #fff;
+	padding-bottom: 0;
+	line-height: 1.5;
+}
+
+.t3ddy-tabs ul li > a {
+	display: inline;
+	border: 0 !important;
+    border-bottom-color: transparent !important;
+    background-color: transparent !important;
+}
+.t3ddy-tabs ul li .btn-group {
+	display: none;
+}
+.t3ddy-tabs ul li.active .btn-group {
+	display: inline-block;
+}
+
+.t3ddy-tabs ul li .btn {
+	border: 0;
+	box-shadow: none;
+	position: relative;
+	bottom: -3px;
+	padding: 0;
+	margin: 0 5px;
+	background: transparent;
+}
+
+.t3ddy-tabs ul li a.btn .icon-markup {
+	opacity: 0.5;
+}
+.t3ddy-tabs ul li a.btn:hover .icon-markup {
+	opacity: 1;
 }
 
 .t3ddy-tabs ul li span.t3-icon-actions {
@@ -46,7 +94,7 @@
 	top: 6px;
 }
 
-.t3ddy-tabs ul li.ui-tabs-active span.t3-icon-actions-document {
+.t3ddy-tabs ul li.active span.t3-icon-actions-document {
 	right: 20px;
 }
 
@@ -57,23 +105,29 @@
 }
 
 .t3ddy-tabs ul li.newTabLink {
-	background: none !important;
-	border: none !important;
 	cursor: pointer !important;
+	padding-bottom: 4px !important;
+	padding-right: 1px;
+	padding-left: 1px;
+	background-color: #eee;
 }
+
 .t3ddy-tabs ul li.newTabLink a {
 	font-weight: bold !important;
 	font-size: 18px;
-	line-height: 0.6em;
-	padding-left: 0.4em !important;
-	padding-right: 0.4em !important;
+	line-height: 1;
 	cursor: pointer !important;
 }
 
-.t3ddy-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+.t3ddy-tabs .ui-tabs .nav-tabs li.ui-tabs-active .ui-tabs-anchor {
 	cursor: move;
 }
 
 .t3ddy-tabs .ui-tabs-panel {
 	padding: 0 !important;
+}
+
+.t3-grid-container-t3ddy-tab-container .btn-default {
+	background-color: transparent !important;
+	border-color: transparent !important;
 }
