@@ -2,7 +2,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 't3ddy - Super cute tabs and accordions',
-	'description' => 't3ddy provides comfortable tabs and accordion handling right in TYPO3 page module using the magic of gridelements.',
+	'description' => 't3ddy provides comfortable tabs and accordion handling right in TYPO3 page module, using the techniques of gridelements.',
 	'category' => 'Backend',
 	'author' => 'Armin Ruediger Vieweg',
 	'author_email' => 'armin@v.ieweg.de',
@@ -19,7 +19,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '1.0.0-dev',
+	'version' => '1.0.0',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '7.6.0-7.6.99',
