@@ -8,7 +8,8 @@
 		<languageKey index="default" type="array">
 			<label index="title">Accordion</label>
 			<label index="description">Accordion container with arbitrary amount of pages.</label>
-			<label index="option.singlePageMode">Single Page Mode: When checked, in accordions only one page can be opened at once.</label>
+			<label index="option.singlePageMode">Single Page Mode: When checked, in accordion only one page can be opened at once.</label>
+			<label index="option.collapsible">Collapsible: When checked, all pages of accordion can get closed again by clicking on header.</label>
 			<label index="option.leaveAllItemsClosed">Leave all items closed: When enabled, all tiles of accordion are initially closed. Set focus of tiles is ignored.</label>
 			<label index="option.heightStyle">Height Style: Controls the height of the accordion and each panel.</label>
 			<label index="option.heightStyle.auto">Auto: All panels will be set to the height of the tallest panel.</label>
@@ -20,7 +21,8 @@
 		<languageKey index="de" type="array">
 			<label index="title">Akkordion</label>
 			<label index="description">Akkordion-Container mit belieber Anzahl von Seiten.</label>
-			<label index="option.singlePageMode">Einzel-Seiten-Modus: Wenn aktiv, wird Akkordien immer nur eine Seite gleichzeitig geöffnet.</label>
+			<label index="option.singlePageMode">Einzel-Seiten-Modus: Wenn aktiv, wird im Akkordion immer nur eine Seite gleichzeitig geöffnet.</label>
+			<label index="option.collapsible">Einklappbar: Wenn aktiv, können alle Seiten eines Akkordions wieder zusammengeklappt werden, wenn man erneut auf den Header klickt.</label>
 			<label index="option.leaveAllItemsClosed">Alle Elemente geschlossen darstellen: Wenn aktiv, werden alle Seiten des Akkordion initial geschlossen dargestellt. Der gesetzte Fokus von Seiten wird dann ignoriert.</label>
 			<label index="option.heightStyle">Höhenstil: Kontrolliert die Höhe des Akkordion und jeder Seite darin.</label>
 			<label index="option.heightStyle.auto">Auto: Alle Seiten werden so hoch, die die höchste Seite.</label>

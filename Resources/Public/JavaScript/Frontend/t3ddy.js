@@ -50,20 +50,18 @@
 			$accordionContainer.accordion({
 				active: getActiveItemIndex($accordionContainer),
 				heightStyle: heightStyle,
-				collapsible: !$accordionContainer.hasClass('single-page-mode'),
+				collapsible: $accordionContainer.hasClass('collapsible') || !$accordionContainer.hasClass('single-page-mode'),
 
 				beforeActivate: function(event, ui) {
 					if ($accordionContainer.hasClass('single-page-mode')) {
 						return true;
 					}
 					// The accordion believes a panel is being opened
+					var currHeader  = ui.oldHeader;
+					var currContent = currHeader.next('.ui-accordion-content');
 					if (ui.newHeader[0]) {
-						var currHeader  = ui.newHeader;
-						var currContent = currHeader.next('.ui-accordion-content');
-						// The accordion believes a panel is being closed
-					} else {
-						var currHeader  = ui.oldHeader;
-						var currContent = currHeader.next('.ui-accordion-content');
+						currHeader  = ui.newHeader;
+						currContent = currHeader.next('.ui-accordion-content');
 					}
 					// Since we've changed the default behavior, this detects the actual status
 					var isPanelSelected = currHeader.attr('aria-selected') == 'true';
