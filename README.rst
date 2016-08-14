@@ -3,6 +3,7 @@ t3ddy for TYPO3 CMS
 
 t3ddy provides comfortable tabs and accordion handling right in TYPO3 page module, using the techniques of gridelements.
 
+Demonstration of 1.0.0-dev: https://www.youtube.com/watch?v=m--P388YaLE
 
 Features
 --------
@@ -70,6 +71,7 @@ Accordion container
 ^^^^^^^^^^^^^^^^^^^
 
 * **Single Page Mode:** When checked, in accordions only one page can be opened at once.
+* **collapsible:** When checked, all pages of accordion can get closed again by clicking on header.
 * **Leave all items closed:** When enabled, all pages of accordion are initially closed. Set focus of tiles is ignored.
 * **Height style:** Controls the height of the accordion container and each page.
 
@@ -90,5 +92,6 @@ A t3ddy item represents either a single tab or page.
 Links
 -----
 
+* **Donate:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LXL6ZT3KCP2S4
 * Issue Tracker: https://forge.typo3.org/projects/extension-t3ddy/issues
 * Source code: https://bitbucket.org/ArminVieweg/t3ddy
