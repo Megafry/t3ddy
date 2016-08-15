@@ -1,7 +1,7 @@
 tx_gridelements.setup.t3ddy-item {
 	title = LLL:EXT:t3ddy/Configuration/Gridelements/Item/locallang.xml:title
 	description = LLL:EXT:t3ddy/Configuration/Gridelements/Item/locallang.xml:description
-	icon = EXT:t3ddy/Configuration/Gridelements/Item/icon.gif
+	icon = EXT:t3ddy/Resources/Public/Icons/Gridelements/Item/icon.gif
 	frame = t3ddy-item
 
 	config {

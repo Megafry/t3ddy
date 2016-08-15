@@ -1,7 +1,7 @@
 tx_gridelements.setup.t3ddy-tab-container {
 	title = LLL:EXT:t3ddy/Configuration/Gridelements/TabContainer/locallang.xml:title
 	description = LLL:EXT:t3ddy/Configuration/Gridelements/TabContainer/locallang.xml:description
-	icon = EXT:t3ddy/Configuration/Gridelements/TabContainer/icon.gif
+	icon = EXT:t3ddy/Resources/Public/Icons/TabContainer/icon.gif
 	frame = t3ddy-tab-container
 
 	config {
