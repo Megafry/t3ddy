@@ -1,7 +1,0 @@
-Deny from all
-Satisfy all
-
-<Files ~ "icon\.gif$">
-	Allow from all
-	Satisfy all
-</Files>

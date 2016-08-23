@@ -1,7 +1,7 @@
 tx_gridelements.setup.t3ddy-accordion {
 	title = LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:title
 	description = LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:description
-	icon = EXT:t3ddy/Configuration/Gridelements/Accordion/icon.gif
+	icon = EXT:t3ddy/Resources/Public/Icons/Gridelements/Accordion/icon.gif
 	frame = t3ddy-accordion
 
 	config {
