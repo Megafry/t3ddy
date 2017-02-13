@@ -326,7 +326,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 							ui.item.data('originalIndex', ui.item.data('originalIndex') + difference);
 							$.post(TYPO3.settings.ajaxUrls['T3ddy::changeTabOrder'], {
 								t3ddy: {
-									tabUid: $(ui.item).find('div.panel-heading').attr('id').replace(/heading\-ce(.*)/g, '$1'),
+                                    tabUid: $(ui.item).find('div.panel-heading').attr('id').replace(/heading\-ce|heading\-element\-tt_content\-(.*)/g, '$1'),
 									difference: difference
 								}
 							}, function(response) {
