@@ -132,7 +132,10 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 							event.stopPropagation();
 						});
 
-						if (itemTitle && $item.parents('.accordionContents').length === 0) {
+                        if (!itemTitle) {
+                            itemTitle = ' ';
+                        }
+						if ($item.parents('.accordionContents').length === 0) {
 							// BS accordion item wrap
 							var $accordionGroup = $('<div />')
 								.addClass('panel panel-default');
