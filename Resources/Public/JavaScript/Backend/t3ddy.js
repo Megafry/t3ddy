@@ -50,6 +50,29 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 		return true;
 	};
 
+	var sortableStopCallback = function(event, ui) {
+        var movedItemUid = ui.item.find('a:first').attr('href').replace(/.*?(\d*)$/g, '$1'),
+            previousItemUid = null;
+
+        if (ui.item.index() > 0) {
+            // move item after this item (if it is not the first item)
+            previousItemUid = ui.item.prev().find('a:first').attr('href').replace(/.*?(\d*)$/g, '$1');
+        }
+
+        $.post(TYPO3.settings.ajaxUrls['T3ddy::changeTabOrder'], {
+            t3ddy: {
+                item: movedItemUid,
+                insertAfter: previousItemUid
+            }
+        }, function(response){
+            response = $.parseJSON(response);
+            if (response.status !== 'ok') {
+                alert('Error while changing sorting. Please refresh page and try again.');
+            }
+        });
+	};
+
+
 	$(function() {
 		var $t3ddyContainers = $($('.t3-grid-container-t3ddy-accordion, .t3-grid-container-t3ddy-tab-container').get().reverse());
 		$t3ddyContainers.each(function(){
@@ -257,26 +280,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 						axis: 'x',
 						items: 'li:not(.newTabLink)',
 						delay: 150,
-						stop: function(event, ui) {
-							var newIndex = ui.item.index();
-							var difference = newIndex - parseInt(ui.item.data('originalIndex'));
-
-							if (difference !== 0) {
-								ui.item.data('originalIndex', ui.item.data('originalIndex') + difference);
-
-								$.post(TYPO3.settings.ajaxUrls['T3ddy::changeTabOrder'], {
-									t3ddy: {
-										tabUid: ui.item.find('a:first').attr('href').replace(/.*?(\d*)$/g, '$1'),
-										difference: difference
-									}
-								}, function(response){
-									response = $.parseJSON(response);
-									if (response.status === 'error') {
-										alert('Error while changing sorting. Please refresh page and try again.');
-									}
-								});
-							}
-						}
+						stop: sortableStopCallback
 					});
                 }
 			}
@@ -327,25 +331,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 						handle: 'h3',
 						delay: 150,
 						items: '.panel:not(.newTabLink)',
-						stop: function(event, ui) {
-							var newIndex = ui.item.index();
-							var difference = newIndex - parseInt(ui.item.data('originalIndex'));
-
-							if (difference !== 0) {
-								ui.item.data('originalIndex', ui.item.data('originalIndex') + difference);
-								$.post(TYPO3.settings.ajaxUrls['T3ddy::changeTabOrder'], {
-									t3ddy: {
-										tabUid: $(ui.item).find('div.panel-heading').attr('id').replace(/.*?(\d*)$/g, '$1'),
-										difference: difference
-									}
-								}, function(response) {
-									response = $.parseJSON(response);
-									if (response.status === 'error') {
-										alert('Error while changing sorting. Please refresh page and try again.');
-									}
-								});
-							}
-						}
+						stop: sortableStopCallback
 					});
                 }
 			}
