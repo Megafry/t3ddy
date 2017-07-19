@@ -5,7 +5,7 @@ namespace ArminVieweg\T3ddy\Ajax;
  *  | free software and is licensed under GNU General Public License.
  *  |
  *  | (c) 2015 Patrick Crausaz <info@frontal.ch>
- *  |     2016 Armin Ruediger Vieweg <armin@v.ieweg.de>
+ *  |     2014-2017 Armin Ruediger Vieweg <armin@v.ieweg.de>
  */
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;

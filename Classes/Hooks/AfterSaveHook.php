@@ -4,7 +4,7 @@ namespace ArminVieweg\T3ddy\Hooks;
 /*  | This extension is part of the TYPO3 project. The TYPO3 project is
  *  | free software and is licensed under GNU General Public License.
  *  |
- *  | (c) 2016 Armin Ruediger Vieweg <armin@v.ieweg.de>
+ *  | (c) 2014-2017 Armin Ruediger Vieweg <armin@v.ieweg.de>
  */
 use ArminVieweg\T3ddy\Utilities\DatabaseUtility;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
