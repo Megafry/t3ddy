@@ -118,11 +118,11 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 					var isDisabled = $parentItem.parent('.text-muted').length > 0;
 
 					// Build Icon Toolbar
-					var editIcon = $item.closest('.t3-page-ce-dragitem')
+					var editIcon = $item.closest('.t3-page-ce, .t3-page-ce-dragitem')
 						.find('.t3-page-ce-header .t3-page-ce-header-icons-right .btn-group a:first')
 						.clone(true)
 						.wrap('<div class="btn btn-default"></div>');
-					var deleteIcon = $item.closest('.t3-page-ce-dragitem')
+					var deleteIcon = $item.closest('.t3-page-ce, .t3-page-ce-dragitem')
 						.find('.t3-page-ce-header .t3-page-ce-header-icons-right .btn-group a:last')
 						.clone(true)
 						.wrap('<div class="btn btn-default"></div>');
