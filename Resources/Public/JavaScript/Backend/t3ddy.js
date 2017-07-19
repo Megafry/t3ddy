@@ -1,11 +1,15 @@
 var jQuery = TYPO3.jQuery;
 
 require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, ui) {
-
 	var createNewItemLink = function($container, $items, $linkItem) {
-		var originalNewLink = $container.find('> table .t3-page-ce-wrapper-new-ce:first a:first')
-			.attr('href')
-			.replace(/.*\?(.*)\'.*/g, '$1');
+		var newLinkElement = $container.find('> table .t3-page-ce-wrapper-new-ce:first a:first');
+		if(newLinkElement.length === 0) {
+            $linkItem.parent().hide();
+            $linkItem.remove();
+			return false;
+		}
+
+		var originalNewLink = newLinkElement.attr('href').replace(/.*\?(.*)\'.*/g, '$1');
 
 		// no t3ddy-items yet, create new item inside the $container
 		var lastItemId = 0;
@@ -37,19 +41,17 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 			}
 		}, function(response) {
 			response = $.parseJSON(response);
-			
 			if (response.status === 'error') {
 				alert('Error while building create-new-item link. Please refresh page and try again.');
 			}
-
 			// Set generated uri to link tag
 			$linkItem.attr('href', decodeURIComponent(response.link))
 		});
+		return true;
 	};
 
 	$(function() {
 		var $t3ddyContainers = $($('.t3-grid-container-t3ddy-accordion, .t3-grid-container-t3ddy-tab-container').get().reverse());
-		
 		$t3ddyContainers.each(function(){
 			var $t3ddyContainer = $(this),
 				containerLevel = $(this).parents('.t3-grid-container-t3ddy-accordion, .t3-grid-container-t3ddy-tab-container').length,
@@ -83,7 +85,6 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 					expanded = i === 0, // first active for accordeon
 					accordeonFirstActive = ((i === 0) ? ' in' : ''), // first active class for accordeon
 					$parentItem = $item.closest('.t3-page-ce-body-inner-gridelements_pi1').find('.t3-ctype-identifier');
-				
 				if (containerLevel === $item.parents('.t3-grid-container-t3ddy-item').length) {
 					$parentItem = $item.closest('.t3-page-ce-body-inner-gridelements_pi1').find('.t3-ctype-identifier');
 					if ($parentItem.length > 1) {
@@ -196,8 +197,9 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 					.attr('title', TYPO3.l10n.localize('newContentElement'))
 					.appendTo($newTabLinkTab);
 
-				createNewItemLink($t3ddyContainer, $items, $newTabLink);
-				
+				var draggingIsEnabled = createNewItemLink($t3ddyContainer, $items, $newTabLink);
+				$container.addClass(draggingIsEnabled ? 't3ddy-drag' : 't3ddy-no-drag');
+
 				$newTabLinkTab.appendTo($ul);
 				$ul.prependTo($container);
 			}
@@ -227,7 +229,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 			});
 
 			if ($container.hasClass('t3ddy-tabs')) {
-				$tabContent.appendTo($container);	
+				$tabContent.appendTo($container);
 
 				// Add the built tab content to TYPO3 BE container
 				$container.prependTo($t3ddyContainer);
@@ -250,31 +252,33 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				});
 
 				// Make tabs sortable
-				$container.find('ul').sortable({
-					axis: 'x',
-					items: 'li:not(.newTabLink)',
-					delay: 150,
-					stop: function(event, ui) {
-						var newIndex = ui.item.index();
-						var difference = newIndex - parseInt(ui.item.data('originalIndex'));
+				if (draggingIsEnabled) {
+					$container.find('ul').sortable({
+						axis: 'x',
+						items: 'li:not(.newTabLink)',
+						delay: 150,
+						stop: function(event, ui) {
+							var newIndex = ui.item.index();
+							var difference = newIndex - parseInt(ui.item.data('originalIndex'));
 
-						if (difference !== 0) {
-							ui.item.data('originalIndex', ui.item.data('originalIndex') + difference);
+							if (difference !== 0) {
+								ui.item.data('originalIndex', ui.item.data('originalIndex') + difference);
 
-							$.post(TYPO3.settings.ajaxUrls['T3ddy::changeTabOrder'], {
-								t3ddy: {
-									tabUid: ui.item.find('a:first').attr('href').replace(/.*?(\d*)$/g, '$1'),
-									difference: difference
-								}
-							}, function(response){
-								response = $.parseJSON(response);
-								if (response.status === 'error') {
-									alert('Error while changing sorting. Please refresh page and try again.');
-								}
-							});
+								$.post(TYPO3.settings.ajaxUrls['T3ddy::changeTabOrder'], {
+									t3ddy: {
+										tabUid: ui.item.find('a:first').attr('href').replace(/.*?(\d*)$/g, '$1'),
+										difference: difference
+									}
+								}, function(response){
+									response = $.parseJSON(response);
+									if (response.status === 'error') {
+										alert('Error while changing sorting. Please refresh page and try again.');
+									}
+								});
+							}
 						}
-					}
-				});
+					});
+                }
 			}
 
 			if ($container.hasClass('t3ddy-accordion')) {
@@ -297,7 +301,8 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				newTabLinkLink.appendTo(newTabLinkWrap);
 				newTabLinkWrap.appendTo($container);
 
-				createNewItemLink($t3ddyContainer, $items, newTabLinkLink);
+				var draggingIsEnabled = createNewItemLink($t3ddyContainer, $items, newTabLinkLink);
+                $container.addClass(draggingIsEnabled ? 't3ddy-drag' : 't3ddy-no-drag');
 
 				$('<div />').addClass('clearRight').appendTo($container);
 
@@ -316,31 +321,33 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 
 
 				// Make accordion pages sortable
-				$container.sortable({
-					axis: 'y',
-					handle: 'h3',
-					delay: 150,
-					items: '.panel:not(.newTabLink)',
-					stop: function(event, ui) {
-						var newIndex = ui.item.index();
-						var difference = newIndex - parseInt(ui.item.data('originalIndex'));
+				if (draggingIsEnabled) {
+					$container.sortable({
+						axis: 'y',
+						handle: 'h3',
+						delay: 150,
+						items: '.panel:not(.newTabLink)',
+						stop: function(event, ui) {
+							var newIndex = ui.item.index();
+							var difference = newIndex - parseInt(ui.item.data('originalIndex'));
 
-						if (difference !== 0) {
-							ui.item.data('originalIndex', ui.item.data('originalIndex') + difference);
-							$.post(TYPO3.settings.ajaxUrls['T3ddy::changeTabOrder'], {
-								t3ddy: {
-                                    tabUid: $(ui.item).find('div.panel-heading').attr('id').replace(/.*?(\d*)$/g, '$1'),
-									difference: difference
-								}
-							}, function(response) {
-								response = $.parseJSON(response);
-								if (response.status === 'error') {
-									alert('Error while changing sorting. Please refresh page and try again.');
-								}
-							});
+							if (difference !== 0) {
+								ui.item.data('originalIndex', ui.item.data('originalIndex') + difference);
+								$.post(TYPO3.settings.ajaxUrls['T3ddy::changeTabOrder'], {
+									t3ddy: {
+										tabUid: $(ui.item).find('div.panel-heading').attr('id').replace(/.*?(\d*)$/g, '$1'),
+										difference: difference
+									}
+								}, function(response) {
+									response = $.parseJSON(response);
+									if (response.status === 'error') {
+										alert('Error while changing sorting. Please refresh page and try again.');
+									}
+								});
+							}
 						}
-					}
-				});
+					});
+                }
 			}
 
 			// Remove old stuff

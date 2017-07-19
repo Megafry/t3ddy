@@ -49,7 +49,7 @@
 	width: 100%;
 }
 
-.t3ddy-accordion h3.ui-accordion-header-active {
+.t3ddy-drag h3.ui-accordion-header-active {
 	cursor: move;
 }
 .t3ddy-accordion h3 div.icons {

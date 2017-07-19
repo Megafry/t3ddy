@@ -4,7 +4,7 @@
 	max-width: 100px;
 }
 
-.t3ddy ul.nav-tabs > li.active > a {
+.t3ddy-drag ul.nav-tabs > li.active > a {
 	cursor: move !important;
 }
 
@@ -119,7 +119,7 @@
 	cursor: pointer !important;
 }
 
-.t3ddy-tabs .ui-tabs .nav-tabs li.ui-tabs-active .ui-tabs-anchor {
+.t3ddy-drag .ui-tabs .nav-tabs li.ui-tabs-active .ui-tabs-anchor {
 	cursor: move;
 }
 
