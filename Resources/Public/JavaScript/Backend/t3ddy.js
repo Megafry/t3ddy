@@ -78,7 +78,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 		$t3ddyContainers.each(function(){
 			var $t3ddyContainer = $(this),
 				containerLevel = $(this).parents('.t3-grid-container-t3ddy-accordion, .t3-grid-container-t3ddy-tab-container').length,
-				containerIdentifier = $t3ddyContainer.closest('.exampleContent').prev('.t3-ctype-identifier').attr('id');
+				containerIdentifier = $t3ddyContainer.closest('.exampleContent').prev('.t3-ctype-identifier').attr('id').replace(/.*\-(\d*)/g, '$1');
 
 			// All items includes also items from nested containers!
 			var $items = $(this).find('> .t3-grid-table .t3-page-ce-wrapper .t3-page-ce .t3-page-ce-body .t3-page-ce-body-inner-gridelements_pi1');
@@ -247,7 +247,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 					// selectors for gridelements Drag & Drop actions
 					$panelWrap
 						.wrapInner('<div class="t3-grid-element-container"></div>')
-						.wrapInner('<div class="t3js-page-ce" data-uid="'+tabIdentifier.replace('ce','')+'"></div>');
+						.wrapInner('<div class="t3js-page-ce" data-uid="'+tabIdentifier.replace(/.*\-(\d*)/g, '$1')+'"></div>');
 				}
 			});
 
@@ -266,11 +266,11 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				var lastActiveTab = $.cookie('t3ddyLastTab-' + containerIdentifier);
 				if(typeof lastActiveTab !== 'undefined'){
 					// activate last active tab
-					$container.find('> ul li .tab-ce'+lastActiveTab).tab('show');
+					$container.find('> ul li a.tab-' + lastActiveTab).tab('show');
 				}
 				// save last active tab
 				$container.on('shown.bs.tab', function (e) {
-					var activateTab = e.target.className.replace('tab-ce', '');
+					var activateTab = e.target.className.replace(/.*\-(\d*)/g, '$1');
 					$.cookie('t3ddyLastTab-' + containerIdentifier, activateTab);
 				});
 
@@ -314,12 +314,14 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				var lastActivePanel = $.cookie('t3ddyLastPanel-' + containerIdentifier);
 				if(typeof lastActivePanel !== 'undefined'){
 					// activate last active panel
-					$container.find('.panel-collapse').collapse('hide');
-					$container.find('#t3ddy-accordion-ce'+lastActivePanel).collapse('show');
+					$container.find('.panel-collapse').removeClass('in').removeClass('collapse');
+                    $container.find('.panel-collapse').not('#t3ddy-accordion-'+lastActivePanel).prev().find('a').addClass('collapsed');
+                    $container.find('.panel-collapse').not('#t3ddy-accordion-'+lastActivePanel).addClass('collapse');
+                    $container.find('#t3ddy-accordion-'+lastActivePanel).addClass('in');
 				}
-				// save last active tab
+				// save last active tile (accordion)
 				$container.on('shown.bs.collapse', function (e) {
-					var activatePanel = e.target.id.replace('t3ddy-accordion-ce', '');
+					var activatePanel = e.target.id.replace(/.*?(\d*)$/, '$1');
 					$.cookie('t3ddyLastPanel-' + containerIdentifier, activatePanel);
 				});
 
