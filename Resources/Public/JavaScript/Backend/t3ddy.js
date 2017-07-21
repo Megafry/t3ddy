@@ -114,7 +114,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 						$parentItem = $parentItem.eq(0);
 					}
 					var itemTitle = $parentItem.text();
-					var itemIdentifier = $parentItem.attr('id');
+					var itemIdentifier = $parentItem.attr('id').replace(/.*\-(\d*)/g, '$1');
 					var isDisabled = $parentItem.parent('.text-muted').length > 0;
 
 					// Build Icon Toolbar
@@ -234,7 +234,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 				if ($container.hasClass('t3ddy-tabs') && containerLevel === $item.parents('.t3-grid-container-t3ddy-item').length) {
 						// Build tab container
 					var $parentItem = $item.closest('.t3-page-ce-body-inner-gridelements_pi1').find('.t3-ctype-identifier');
-					var tabIdentifier = $parentItem.attr('id');
+					var tabIdentifier = $parentItem.attr('id').replace(/.*\-(\d*)/g, '$1');
 					var active = ((i === 0) ? ' active' : '');
 					var $panelWrap = $('<div />')
 						.attr('id', 't3ddy-tab-' + tabIdentifier)
