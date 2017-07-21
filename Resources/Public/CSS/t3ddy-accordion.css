@@ -6,7 +6,7 @@
 	margin-bottom: 0;
 }
 
-.t3ddy-accordion .newTabLink {
+.t3ddy-accordion > .newTabLink {
 	float: right;
 	margin-top: 8px;
 	margin-right: 8px;
