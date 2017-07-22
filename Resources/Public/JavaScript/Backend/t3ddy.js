@@ -15,7 +15,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 		var lastItemId = 0;
 		if ($items.length) {
 			// create new item after last available tab / panel
-			lastItemId = $items.last().find('.t3-ctype-identifier').attr('id').replace('ce', '');
+			lastItemId = $items.last().find('.t3-ctype-identifier').attr('id').replace(/.*?(\d*)$/g, '$1');
 		}
 
 		var parts = originalNewLink.split('&');
@@ -145,7 +145,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 								.text(itemTitle)
 								.addClass('tab-'+itemIdentifier)
 								.data('id', itemIdentifier)
-								.attr('title', 'id='+itemIdentifier.replace('ce', ''));
+								.attr('title', 'id='+itemIdentifier.replace(/.*?(\d*)$/g, '$1'));
 
 						tabLink.appendTo(tabListItem);
 						toolbar.appendTo(tabListItem);
@@ -176,7 +176,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 
 							var $headingLink = $('<a />')
 								.text(itemTitle)
-								.attr('title', 'id='+itemIdentifier.replace('ce', ''))
+								.attr('title', 'id='+itemIdentifier.replace(/.*?(\d*)$/g, '$1'))
 								.addClass('panel-'+itemIdentifier)
 								.attr('role', 'button')
 								.attr('data-toggle', 'collapse')
@@ -194,7 +194,7 @@ require(['jquery', 'jquery.cookie', 'jquery-ui/sortable'], function($, cookie, u
 							// BS accordion item body
 							var $bodyOuter = $('<div />')
 								.addClass('t3js-page-ce panel-collapse collapse' + accordeonFirstActive)
-								.attr('data-uid', itemIdentifier.replace('ce', ''))
+								.attr('data-uid', itemIdentifier.replace(/.*?(\d*)$/g, '$1'))
 								.attr('id', 't3ddy-accordion-' + itemIdentifier)
 								.attr('role', 'tabpanel')
 								.attr('aria-labelledby', 'heading-'+itemIdentifier)
