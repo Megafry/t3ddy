@@ -47,8 +47,8 @@ class LinkBuilder
         }
 
         // generate return URL
-        $returnUrl = urlencode($uriBuilder->buildUriFromModule('web_layout', array('id' => $pid)));
-        $urlParams = array(
+        $returnUrl = urlencode($uriBuilder->buildUriFromModule('web_layout', ['id' => $pid]));
+        $urlParams = [
             'edit[tt_content][' . $lastItemId . ']' => 'new',
             'defVals[tt_content][colPos]' => $colPos,
             'defVals[tt_content][sys_language_uid]' => $sys_language_uid,
@@ -57,13 +57,9 @@ class LinkBuilder
             'defVals[tt_content][tx_gridelements_container]' => $tx_gridelements_container,
             'defVals[tt_content][tx_gridelements_columns]' => $tx_gridelements_columns,
             'returnUrl' => $returnUrl
-        );
+        ];
         $link = $uriBuilder->buildUriFromRoute('record_edit', $urlParams);
         $uri = $link->getPath() . '?' . $link->getQuery();
-
-        echo json_encode(array(
-            'status' => 'ok',
-            'link' => $uri
-        ));
+        echo json_encode(['status' => 'ok', 'link' => $uri]);
     }
 }

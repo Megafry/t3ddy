@@ -17,7 +17,6 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class TabOrder
 {
-
     /**
      * Perform change of sortings of given tab.
      * Outputs json string response.
@@ -36,19 +35,14 @@ class TabOrder
 
         /** @var \TYPO3\CMS\Core\DataHandling\DataHandler $dataHandler */
         $dataHandler = GeneralUtility::makeInstance(\TYPO3\CMS\Core\DataHandling\DataHandler::class);
-
         $cmd = [];
         if ($parameters['insertAfter']) {
             $cmd['tt_content'][$movedItemRow['uid']]['move'] = '-' . $parameters['insertAfter'];
         } else {
             $cmd['tt_content'][$movedItemRow['uid']]['move'] = $movedItemRow['pid'];
         }
-
         $dataHandler->start([], $cmd);
         $dataHandler->process_cmdmap();
-
-        echo json_encode(array(
-            'status' => 'ok'
-        ));
+        echo json_encode(['status' => 'ok']);
     }
 }

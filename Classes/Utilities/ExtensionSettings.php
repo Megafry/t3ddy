@@ -22,14 +22,14 @@ class ExtensionSettings implements \TYPO3\CMS\Core\SingletonInterface
     /**
      * @var array
      */
-    protected $settings = array();
+    protected $settings = [];
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::EXTKEY]);
+        $this->settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][static::EXTKEY]);
     }
 
     /**
@@ -39,7 +39,7 @@ class ExtensionSettings implements \TYPO3\CMS\Core\SingletonInterface
      */
     public function isTabContainerEnabled()
     {
-        return !(boolean)$this->settings['disableTabContainer'];
+        return !(bool) $this->settings['disableTabContainer'];
     }
 
     /**
@@ -49,7 +49,7 @@ class ExtensionSettings implements \TYPO3\CMS\Core\SingletonInterface
      */
     public function isAccordionEnabled()
     {
-        return !(boolean)$this->settings['disableAccordion'];
+        return !(bool) $this->settings['disableAccordion'];
     }
 
     /**
@@ -59,7 +59,7 @@ class ExtensionSettings implements \TYPO3\CMS\Core\SingletonInterface
      */
     public function disableGridElementsChildrenInT3ddyItem()
     {
-        return (bool)$this->settings['disableGridElementsChildrenInT3ddyItem'];
+        return (bool) $this->settings['disableGridElementsChildrenInT3ddyItem'];
     }
 
     /**
@@ -69,6 +69,6 @@ class ExtensionSettings implements \TYPO3\CMS\Core\SingletonInterface
      */
     public function createFirstT3ddyItem()
     {
-        return (bool)$this->settings['createFirstT3ddyItem'];
+        return (bool) $this->settings['createFirstT3ddyItem'];
     }
 }
