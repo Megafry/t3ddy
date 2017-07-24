@@ -39,10 +39,10 @@ class AfterSaveHook
         if ($table === 'tt_content' &&
             $status === 'new' &&
             $fieldArray['CType'] === 'gridelements_pi1' &&
-            in_array($fieldArray['tx_gridelements_backend_layout'], array('t3ddy-tab-container', 't3ddy-accordion'))
+            in_array($fieldArray['tx_gridelements_backend_layout'], ['t3ddy-tab-container', 't3ddy-accordion']) &&
+            $pObj->dontProcessTransformations === false
         ) {
             $newT3ddyItemTitle = 'New Item';
-
             $pageTs = BackendUtility::getPagesTSconfig($fieldArray['pid']);
             if (isset($pageTs['tx_t3ddy.']['defaults.']['newT3ddyItemTitle'])) {
                 $newT3ddyItemTitle = $pageTs['tx_t3ddy.']['defaults.']['newT3ddyItemTitle'];
@@ -51,7 +51,7 @@ class AfterSaveHook
             // Create new child item
             DatabaseUtility::getDatabaseConnection()->exec_INSERTquery(
                 'tt_content',
-                array_merge($fieldArray, array(
+                array_merge($fieldArray, [
                     'tx_gridelements_backend_layout' => 't3ddy-item',
                     'tx_gridelements_container' => $uid,
                     'tx_gridelements_columns' => '31337',
@@ -59,7 +59,24 @@ class AfterSaveHook
                     'pi_flexform' => '',
                     'colPos' => '-1',
                     'header' => $newT3ddyItemTitle
-                ))
+                ])
+            );
+        }
+
+        // t3ddy items must never be disabled/hidden by TYPO3. But this
+        // automatically happens for example when items are translated
+        if ($table === 'tt_content' &&
+            $status === 'new' &&
+            $fieldArray['CType'] === 'gridelements_pi1' &&
+            $fieldArray['tx_gridelements_backend_layout'] === 't3ddy-item'
+        ) {
+            $db = DatabaseUtility::getDatabaseConnection();
+            $db->exec_UPDATEquery(
+              'tt_content',
+              'uid = '.$db->fullQuoteStr($uid,'tt_content'),
+              array_merge($fieldArray, [
+                  'hidden' => '0'
+              ])
             );
         }
     }
@@ -88,6 +105,6 @@ class AfterSaveHook
                 }
             }
         }
-        return intval($uid);
+        return (int) $uid;
     }
 }
