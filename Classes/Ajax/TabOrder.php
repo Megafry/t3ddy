@@ -7,7 +7,10 @@ namespace ArminVieweg\T3ddy\Ajax;
  *  | (c) 2014-2017 Armin Ruediger Vieweg <armin@v.ieweg.de>
  */
 
-use ArminVieweg\T3ddy\Utilities\DatabaseUtility;
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\DataHandling\DataHandler;
+use TYPO3\CMS\Core\Http\Response;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -21,20 +24,26 @@ class TabOrder
      * Perform change of sortings of given tab.
      * Outputs json string response.
      *
-     * @return void
+     * @param ServerRequestInterface $request
+     * @param Response $response
+     * @return Response
      */
-    public function change()
+    public function change(ServerRequestInterface $request, Response $response) : Response
     {
-        $databaseConnection = DatabaseUtility::getDatabaseConnection();
         $parameters = GeneralUtility::_GPmerged('t3ddy');
-        $movedItemRow = $databaseConnection->exec_SELECTgetSingleRow(
-            '*',
-            'tt_content',
-            'uid = ' . (int) $parameters['item']
-        );
 
-        /** @var \TYPO3\CMS\Core\DataHandling\DataHandler $dataHandler */
-        $dataHandler = GeneralUtility::makeInstance(\TYPO3\CMS\Core\DataHandling\DataHandler::class);
+        /** @var ConnectionPool $connectionPool */
+        $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
+        $queryBuilder = clone $connectionPool->getQueryBuilderForTable('tt_content');
+        $movedItemRow = $queryBuilder
+            ->select('*')
+            ->from('tt_content')
+            ->where($queryBuilder->expr()->eq('uid', (int) $parameters['item']))
+            ->execute()
+            ->fetch(\PDO::FETCH_ASSOC);
+
+        /** @var DataHandler $dataHandler */
+        $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
         $cmd = [];
         if ($parameters['insertAfter']) {
             $cmd['tt_content'][$movedItemRow['uid']]['move'] = '-' . $parameters['insertAfter'];
@@ -43,6 +52,8 @@ class TabOrder
         }
         $dataHandler->start([], $cmd);
         $dataHandler->process_cmdmap();
-        echo json_encode(['status' => 'ok']);
+
+        $response->getBody()->write(json_encode(['status' => 'ok']));
+        return $response;
     }
 }

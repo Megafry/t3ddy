@@ -8,6 +8,8 @@ namespace ArminVieweg\T3ddy\Ajax;
  *  |     2014-2017 Armin Ruediger Vieweg <armin@v.ieweg.de>
  */
 
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Http\Response;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 
@@ -22,17 +24,20 @@ class LinkBuilder
     /**
      * Builds the link to create a new t3ddy item
      *
-     * @return void
+     * @param ServerRequestInterface $request
+     * @param Response $response
+     * @return Response
+     * @throws \TYPO3\CMS\Backend\Routing\Exception\RouteNotFoundException
      */
-    public function createNewItemLink()
+    public function createNewItemLink(ServerRequestInterface $request, Response $response) : Response
     {
         /** @var UriBuilder $uriBuilder */
         $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
 
         $parameters = GeneralUtility::_GPmerged('t3ddy');
-        $pid = intval($parameters['pid']);
+        $pid = (int) $parameters['pid'];
         $colPos = $parameters['colPos'];
-        $lastItemId = intval($parameters['lastItemId']);
+        $lastItemId = (int) $parameters['lastItemId'];
         $sys_language_uid = $parameters['sys_language_uid'];
         $tx_gridelements_container = $parameters['tx_gridelements_container'];
         $tx_gridelements_columns = $parameters['tx_gridelements_columns'];
@@ -47,7 +52,7 @@ class LinkBuilder
         }
 
         // generate return URL
-        $returnUrl = urlencode($uriBuilder->buildUriFromModule('web_layout', ['id' => $pid]));
+        $returnUrl = urlencode($uriBuilder->buildUriFromModule('web_layout', ['id' => $pid])); // TODO
         $urlParams = [
             'edit[tt_content][' . $lastItemId . ']' => 'new',
             'defVals[tt_content][colPos]' => $colPos,
@@ -60,6 +65,8 @@ class LinkBuilder
         ];
         $link = $uriBuilder->buildUriFromRoute('record_edit', $urlParams);
         $uri = $link->getPath() . '?' . $link->getQuery();
-        echo json_encode(['status' => 'ok', 'link' => $uri]);
+
+        $response->getBody()->write(json_encode(['status' => 'ok', 'link' => $uri]));
+        return $response;
     }
 }

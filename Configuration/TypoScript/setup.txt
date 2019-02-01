@@ -23,4 +23,4 @@ tt_content.stdWrap.innerWrap.cObject.default.stdWrap.stdWrap.if {
 page.includeCSS.jQueryUi = EXT:t3ddy/Resources/Public/CSS/jquery-ui-1.11.4.min.css
 page.includeCSS.t3ddy = EXT:t3ddy/Resources/Public/CSS/t3ddy.css
 page.includeJSFooterlibs.jQueryUi = EXT:t3ddy/Resources/Public/JavaScript/Libraries/jquery-ui-1.11.4-custom.min.js
-page.includeJSFooter.t3ddy = EXT:t3ddy/Resources/Public/JavaScript/Frontend/t3ddy.js
+page.includeJSFooter.t3ddy = EXT:t3ddy/Resources/Public/JavaScript/Frontend/T3ddy.js

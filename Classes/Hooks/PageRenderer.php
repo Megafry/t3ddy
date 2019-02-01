@@ -7,7 +7,7 @@ namespace ArminVieweg\T3ddy\Hooks;
  *  | (c) 2014-2017 Armin Ruediger Vieweg <armin@v.ieweg.de>
  */
 
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use ArminVieweg\T3ddy\Utilities\ExtensionSettings;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -18,7 +18,7 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
 class PageRenderer
 {
     /**
-     * @var \ArminVieweg\T3ddy\Utilities\ExtensionSettings
+     * @var ExtensionSettings
      */
     protected $extensionSettings;
 
@@ -39,19 +39,21 @@ class PageRenderer
      * @param \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer
      * @return void
      */
-    public function addCssAndJs(array $parameters, \TYPO3\CMS\Core\Page\PageRenderer &$pageRenderer)
+    public function addAssets(array $parameters, \TYPO3\CMS\Core\Page\PageRenderer &$pageRenderer)
     {
         if ($this->isPageModule()) {
+            $extensionSettings = GeneralUtility::makeInstance(ExtensionSettings::class);
 
-            $this->initialize($pageRenderer);
+            $pageRenderer->loadRequireJsModule('TYPO3/CMS/T3ddy/Backend/T3ddy');
+//            $this->initialize($pageRenderer);
 
-            $this->includeLibrariesAndGeneralFiles();
+//            $this->includeLibrariesAndGeneralFiles();
 
-            if ($this->extensionSettings->isTabContainerEnabled()) {
-                $this->includeTabContainerFiles();
+            if ($extensionSettings->isTabContainerEnabled()) {
+//                $this->includeTabContainerFiles();
             }
-            if ($this->extensionSettings->isAccordionEnabled()) {
-                $this->includeAccordionFiles();
+            if ($extensionSettings->isAccordionEnabled()) {
+//                $this->includeAccordionFiles();
             }
         }
     }
@@ -65,8 +67,8 @@ class PageRenderer
     protected function initialize($pageRenderer)
     {
         $this->pageRenderer = $pageRenderer;
-        $this->extensionSettings = GeneralUtility::makeInstance('ArminVieweg\\T3ddy\\Utilities\\ExtensionSettings');
-        $this->resourcePath = ExtensionManagementUtility::extRelPath('t3ddy') . '/Resources/Public/';
+//        $this->extensionSettings = GeneralUtility::makeInstance('ArminVieweg\\T3ddy\\Utilities\\ExtensionSettings');
+//        $this->resourcePath = ExtensionManagementUtility::extRelPath('t3ddy') . '/Resources/Public/';
     }
 
     /**
@@ -76,12 +78,15 @@ class PageRenderer
      */
     protected function isPageModule()
     {
-        if (GeneralUtility::compat_version('7.0')) {
+        if (version_compare(TYPO3_version, '8', '<')) {
             return (array_key_exists('M', $_GET) && $_GET['M'] === 'web_layout');
-        } else {
-            return (array_key_exists('id', $_GET) && count($_GET) === 1)
-            || (array_key_exists('id', $_GET) && count($_GET) === 2 && array_key_exists('SET', $_GET));
         }
+        if (version_compare(TYPO3_version, '9', '<')) {
+            return (array_key_exists('id', $_GET) && count($_GET) === 1) ||
+                   (array_key_exists('id', $_GET) && count($_GET) === 2 && array_key_exists('SET', $_GET));
+        }
+        return array_key_exists('id', $_GET) && array_key_exists('token', $_GET) &&
+               array_key_exists('route', $_GET) && $_GET['route'] === '/web/layout/';
     }
 
     /**
@@ -90,7 +95,8 @@ class PageRenderer
      * @return void
      */
     protected function includeLibrariesAndGeneralFiles()
-    {$this->pageRenderer->loadJquery();
+    {
+        $this->pageRenderer->loadJquery();
 
         // jQuery UI: sortable
         $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Backend/LayoutModule/DragDrop');

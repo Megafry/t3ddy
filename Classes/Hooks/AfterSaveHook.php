@@ -6,8 +6,9 @@ namespace ArminVieweg\T3ddy\Hooks;
  *  |
  *  | (c) 2014-2017 Armin Ruediger Vieweg <armin@v.ieweg.de>
  */
-use ArminVieweg\T3ddy\Utilities\DatabaseUtility;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * AfterSave Hook
@@ -36,6 +37,9 @@ class AfterSaveHook
     ) {
         $uid = $this->getUid($id, $table, $status, $pObj);
 
+        /** @var ConnectionPool $connectionPool */
+        $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
+
         if ($table === 'tt_content' &&
             $status === 'new' &&
             $fieldArray['CType'] === 'gridelements_pi1' &&
@@ -49,7 +53,8 @@ class AfterSaveHook
             }
 
             // Create new child item
-            DatabaseUtility::getDatabaseConnection()->exec_INSERTquery(
+            $queryBuilder = clone $connectionPool->getQueryBuilderForTable('tt_content');
+            $queryBuilder->insert(
                 'tt_content',
                 array_merge($fieldArray, [
                     'tx_gridelements_backend_layout' => 't3ddy-item',
@@ -70,13 +75,11 @@ class AfterSaveHook
             $fieldArray['CType'] === 'gridelements_pi1' &&
             $fieldArray['tx_gridelements_backend_layout'] === 't3ddy-item'
         ) {
-            $db = DatabaseUtility::getDatabaseConnection();
-            $db->exec_UPDATEquery(
-              'tt_content',
-              'uid = '.$db->fullQuoteStr($uid,'tt_content'),
-              array_merge($fieldArray, [
-                  'hidden' => '0'
-              ])
+            $connection = $connectionPool->getConnectionForTable('tt_content');
+            $connection->update(
+                'tt_content',
+                array_merge($fieldArray, ['hidden' => '0']),
+                ['uid' => $uid]
             );
         }
     }

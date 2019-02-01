@@ -121,7 +121,7 @@ Vagrant.configure("2") do |config|
         composer config extra.typo3/cms.web-dir public
 
         echo "Fetching TYPO3 CMS 9 using Composer..."
-        composer require t3/cms:"^9.0" #{packageName}:"*@dev" --no-progress --no-suggest --no-interaction
+        composer require t3/cms:"^9.0" --no-progress --no-suggest --no-interaction
 
         vendor/bin/typo3cms install:setup --force --database-user-name "root" --database-user-password "root" --database-host-name "localhost" --database-name "typo3_9" --database-port "3306" --database-socket "" --admin-user-name "admin" --admin-password "password" --site-name "EXT:#{extensionKey} Dev Environment" --site-setup-type "site"
         vendor/bin/typo3cms configuration:set BE/debug true
