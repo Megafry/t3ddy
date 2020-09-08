@@ -8,10 +8,12 @@ namespace ArminVieweg\T3ddy\Ajax;
  */
 
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Http\Response;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Http\JsonResponse;
 
 /**
  * Class TabOrder
@@ -25,10 +27,9 @@ class TabOrder
      * Outputs json string response.
      *
      * @param ServerRequestInterface $request
-     * @param Response $response
      * @return Response
      */
-    public function change(ServerRequestInterface $request, Response $response) : Response
+    public function change(ServerRequestInterface $request) : ResponseInterface
     {
         $parameters = GeneralUtility::_GPmerged('t3ddy');
 
@@ -53,6 +54,7 @@ class TabOrder
         $dataHandler->start([], $cmd);
         $dataHandler->process_cmdmap();
 
+        $response = new JsonResponse('');
         $response->getBody()->write(json_encode(['status' => 'ok']));
         return $response;
     }

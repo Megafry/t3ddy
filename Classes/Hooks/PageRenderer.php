@@ -45,15 +45,15 @@ class PageRenderer
             $extensionSettings = GeneralUtility::makeInstance(ExtensionSettings::class);
 
             $pageRenderer->loadRequireJsModule('TYPO3/CMS/T3ddy/Backend/T3ddy');
-//            $this->initialize($pageRenderer);
+            $this->initialize($pageRenderer);
 
-//            $this->includeLibrariesAndGeneralFiles();
+            $this->includeLibrariesAndGeneralFiles();
 
             if ($extensionSettings->isTabContainerEnabled()) {
-//                $this->includeTabContainerFiles();
+                $this->includeTabContainerFiles();
             }
             if ($extensionSettings->isAccordionEnabled()) {
-//                $this->includeAccordionFiles();
+               $this->includeAccordionFiles();
             }
         }
     }
@@ -67,8 +67,8 @@ class PageRenderer
     protected function initialize($pageRenderer)
     {
         $this->pageRenderer = $pageRenderer;
-//        $this->extensionSettings = GeneralUtility::makeInstance('ArminVieweg\\T3ddy\\Utilities\\ExtensionSettings');
-//        $this->resourcePath = ExtensionManagementUtility::extRelPath('t3ddy') . '/Resources/Public/';
+        $this->extensionSettings = GeneralUtility::makeInstance('ArminVieweg\\T3ddy\\Utilities\\ExtensionSettings');
+        $this->resourcePath = 'EXT:t3ddy/Resources/Public/';
     }
 
     /**
@@ -78,6 +78,9 @@ class PageRenderer
      */
     protected function isPageModule()
     {
+
+      /*
+      drop version 8 abd 9
         if (version_compare(TYPO3_version, '8', '<')) {
             return (array_key_exists('M', $_GET) && $_GET['M'] === 'web_layout');
         }
@@ -85,8 +88,9 @@ class PageRenderer
             return (array_key_exists('id', $_GET) && count($_GET) === 1) ||
                    (array_key_exists('id', $_GET) && count($_GET) === 2 && array_key_exists('SET', $_GET));
         }
+      */
         return array_key_exists('id', $_GET) && array_key_exists('token', $_GET) &&
-               array_key_exists('route', $_GET) && $_GET['route'] === '/web/layout/';
+               array_key_exists('route', $_GET) && $_GET['route'] === '/module/web/layout';
     }
 
     /**
@@ -96,12 +100,13 @@ class PageRenderer
      */
     protected function includeLibrariesAndGeneralFiles()
     {
-        $this->pageRenderer->loadJquery();
+      //  $this->pageRenderer->loadJquery();
 
         // jQuery UI: sortable
         $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Backend/LayoutModule/DragDrop');
 
         // jQuery cookie
+        /*
         $this->pageRenderer->addJsLibrary(
             'jquery-cookie',
             $this->resourcePath . 'JavaScript/Libraries/jquery.cookie.js',
@@ -111,9 +116,10 @@ class PageRenderer
             '',
             TRUE
         );
+        */
 
-        $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Backend/LayoutModule/DragDrop');
-
+        $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/T3ddy/Libraries/jquery.cookie');
+/*
         $this->pageRenderer->addJsFooterFile(
             $this->resourcePath . 'JavaScript/Backend/t3ddy.js',
             'text/javascript',
@@ -122,6 +128,8 @@ class PageRenderer
             '',
             true
         );
+        */
+        $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/T3ddy/Backend/T3ddy');
 
         $this->pageRenderer->addCssFile(
             $this->resourcePath . 'CSS/jquery-ui-1.11.4.min.css',
@@ -133,6 +141,7 @@ class PageRenderer
             '', // allWrap
             false //excludeFromConcatenation
         );
+        $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/T3ddy/Backend/T3ddy');
 
         $this->pageRenderer->addCssFile(
             $this->resourcePath . 'CSS/t3ddy.css',

@@ -32,6 +32,7 @@ tx_gridelements.setup.t3ddy-accordion {
 							<label>LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.singlePageMode</label>
 							<config type="array">
 								<type>select</type>
+								<renderType>selectSingle</renderType>
 								<items type="array">
 									<numIndex index="0" type="array">
 										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.off</numIndex>
@@ -51,6 +52,7 @@ tx_gridelements.setup.t3ddy-accordion {
 							<label>LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.collapsible</label>
 							<config type="array">
 								<type>select</type>
+								<renderType>selectSingle</renderType>
 								<items type="array">
 									<numIndex index="0" type="array">
 										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.off</numIndex>
@@ -70,6 +72,7 @@ tx_gridelements.setup.t3ddy-accordion {
 							<label>LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.leaveAllItemsClosed</label>
 							<config type="array">
 								<type>select</type>
+								<renderType>selectSingle</renderType>
 								<items type="array">
 									<numIndex index="0" type="array">
 										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.off</numIndex>
@@ -89,6 +92,7 @@ tx_gridelements.setup.t3ddy-accordion {
 							<label>LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.heightStyle</label>
 							<config type="array">
 								<type>select</type>
+								<renderType>selectSingle</renderType>
 								<items type="array">
 									<numIndex index="0" type="array">
 										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.heightStyle.auto</numIndex>

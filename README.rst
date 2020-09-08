@@ -1,4 +1,4 @@
-t3ddy for TYPO3 CMS
+t3ddy for TYPO3 CMS 10.4
 ===================
 
 t3ddy provides comfortable tabs and accordion handling right in TYPO3 page module, using the techniques of gridelements.

@@ -17,7 +17,7 @@ define([
 			return false;
 		}
 
-		var originalNewLink = newLinkElement.data('url').replace(/.*\?(.*)\'.*/g, '$1');
+		var originalNewLink = newLinkElement.attr('href').replace(/.*\?(.*)\'.*/g, '$1');
 
 		// no t3ddy-items yet, create new item inside the $container
 		var lastItemId = 0;
@@ -362,7 +362,7 @@ define([
 
 			console.log('to remove', $container, $container.nextAll());
 			// Remove old stuff
-			$container.nextAll().remove();
+			$t3ddyContainer.nextAll().remove();
 		});
 	});
 });

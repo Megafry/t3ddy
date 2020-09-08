@@ -32,6 +32,7 @@ tx_gridelements.setup.t3ddy-item {
 							<label>LLL:EXT:t3ddy/Configuration/Gridelements/Item/locallang.xml:option.focus</label>
 							<config type="array">
 								<type>select</type>
+								<renderType>selectSingle</renderType>
 								<items type="array">
 									<numIndex index="0" type="array">
 										<numIndex index="0">LLL:EXT:t3ddy/Configuration/Gridelements/Accordion/locallang.xml:option.off</numIndex>

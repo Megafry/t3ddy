@@ -2,7 +2,7 @@
 	"name": "arminvieweg/t3ddy",
 	"type": "typo3-cms-extension",
 	"description": "t3ddy provides comfortable tabs and accordion handling right in TYPO3 page module, using the techniques of gridelements.",
-	"version": "1.2.0",
+	"version": "2.0.0",
 	"homepage": "https://bitbucket.org/ArminVieweg/t3ddy",
 	"license": "GPL-2.0",
 	"authors": [
@@ -21,8 +21,8 @@
 	"require": {
 		"php": ">=7.1",
 		"ext-json": "*",
-		"typo3/cms-core": "^8.7 || ^9.5",
-		"gridelementsteam/gridelements": "^8.3 || ^9.0"
+		"typo3/cms-core": "^10.4",
+		"gridelementsteam/gridelements": "^10.0"
 	},
 	"autoload": {
 		"psr-4": {

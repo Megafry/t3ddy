@@ -6,6 +6,9 @@ namespace ArminVieweg\T3ddy\Utilities;
  *  |
  *  | (c) 2014-2017 Armin Ruediger Vieweg <armin@v.ieweg.de>
  */
+ 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 
 /**
  * Class ExtensionSettings
@@ -29,7 +32,7 @@ class ExtensionSettings implements \TYPO3\CMS\Core\SingletonInterface
      */
     public function __construct()
     {
-        $this->settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][static::EXTKEY]);
+        $this->settings = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get(static::EXTKEY);
     }
 
     /**

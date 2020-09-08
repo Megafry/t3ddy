@@ -12,7 +12,7 @@ if (TYPO3_MODE === 'BE') {
                 'paths' => [
                     'jquery.cookie' => \TYPO3\CMS\Core\Utility\PathUtility::getAbsoluteWebPath(
                         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath(
-                            $_EXTKEY,
+                            't3ddy',
                             'Resources/Public/JavaScript/Libraries/'
                         )
                     ) . 'jquery.cookie'
@@ -24,7 +24,7 @@ if (TYPO3_MODE === 'BE') {
                 'paths' => [
                     'jquery-ui/sortable' => \TYPO3\CMS\Core\Utility\PathUtility::getAbsoluteWebPath(
                         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath(
-                            $_EXTKEY,
+                            't3ddy',
                             'Resources/Public/JavaScript/Libraries/'
                         )
                     ) . 'jquery-ui-1.11.4-custom.min'
@@ -57,19 +57,19 @@ $extensionSettings = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
 
 if ($extensionSettings->isTabContainerEnabled()) {
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(file_get_contents(
-		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/Gridelements/TabContainer/tsconfig.ts'
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('t3ddy') . 'Configuration/Gridelements/TabContainer/tsconfig.ts'
 	));
 }
 
 if ($extensionSettings->isAccordionEnabled()) {
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(file_get_contents(
-		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/Gridelements/Accordion/tsconfig.ts'
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('t3ddy') . 'Configuration/Gridelements/Accordion/tsconfig.ts'
 	));
 }
 
 if ($extensionSettings->isAccordionEnabled() || $extensionSettings->isTabContainerEnabled()) {
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(file_get_contents(
-		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/Gridelements/Item/tsconfig.ts'
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('t3ddy') . 'Configuration/Gridelements/Item/tsconfig.ts'
 	));
 }
 
