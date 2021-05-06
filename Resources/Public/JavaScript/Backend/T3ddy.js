@@ -92,7 +92,7 @@ define([
 
 		$t3ddyContainers.each(function(){
 			var $t3ddyContainer = $(this),
-				containerLevel = $(this).parents('*[data-tx_gridelements_backend_layout="t3ddy-tab-container"], *[data-tx_gridelements_backend_layout="t3ddy-accordion"]').length,
+				containerLevel =$(this).parents(".exampleContent").prev('*[data-tx_gridelements_backend_layout="t3ddy-tab-container"], *[data-tx_gridelements_backend_layout="t3ddy-accordion"]').length,
 				containerIdentifier = $t3ddyContainer.attr('id').replace(/.*\-(\d*)/g, '$1');
 
 			// All items includes also items from nested containers!

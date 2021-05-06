@@ -1,0 +1,7 @@
+2021-05-06 Megafry
+	* version 2.0.1
+	* fixed issue with nested t3ddy elements
+
+2020-09-08 Megafry
+	* version 2.0.0
+	* fix for TYPO3 10.4
