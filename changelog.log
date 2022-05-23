@@ -1,3 +1,9 @@
+2022-05-23 Megafry
+	* version 2.0.2
+	* fixed old call for translation TYPO3.l10n
+	* use JsonResponse as return response
+	* fix for TYPO3 11.5 (Could not test everything yet because gridelements is still in dev)
+
 2021-05-06 Megafry
 	* version 2.0.1
 	* fixed issue with nested t3ddy elements

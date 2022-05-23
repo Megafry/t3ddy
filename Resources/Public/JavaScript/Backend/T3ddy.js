@@ -5,12 +5,12 @@ define([
 ], function ($, cookie, ui) {
 	'use strict';
 
-	console.log('t3ddy backend loaded');
+	//console.log('t3ddy backend loaded');
 
 	var createNewItemLink = function($container, $items, $linkItem) {
-		console.log('calling createnewitemlink', $container);
+		//console.log('calling createnewitemlink', $container);
 		var newLinkElement = $container.next('.exampleContent').find('table.t3-grid-table:first .t3-page-ce-wrapper-new-ce:first a:first');
-		console.log(newLinkElement);
+		//console.log(newLinkElement);
 		if(newLinkElement.length === 0) {
 			$linkItem.parent().hide();
 			$linkItem.remove();
@@ -28,7 +28,7 @@ define([
 
 		var parts = originalNewLink.split('&');
 		var parameters = {};
-		console.log('parts', parts);
+		//console.log('parts', parts);
 		for (var i = 0; i < parts.length; i++) {
 			var part = parts[i].split('=');
 			parameters[part[0]] = part[1];
@@ -129,7 +129,7 @@ define([
 						$parentItem = $parentItem.eq(0);
 					}
 					var itemTitle = $parentItem.text();
-					console.log('parentitem', $parentItem);
+					//console.log('parentitem', $parentItem);
 					var itemIdentifier = $parentItem.attr('id').replace(/.*\-(\d*)/g, '$1');
 					var isDisabled = $parentItem.parent('.text-muted').length > 0;
 
@@ -154,11 +154,12 @@ define([
 							.addClass((isDisabled) ? 'hidden' : 'visible')
 							.addClass(active);
 
-						console.log('itemidentifier', itemIdentifier);
+						//console.log('itemidentifier', itemIdentifier);
 
 						var tabLink = $('<a />')
 							.attr('href', '#t3ddy-tab-' + itemIdentifier)
 							.attr('data-toggle','tab')
+							.attr('data-bs-toggle','tab')
 							.attr('role','tab')
 							.text(itemTitle)
 							.addClass('tab-'+itemIdentifier)
@@ -198,6 +199,7 @@ define([
 								.addClass('panel-'+itemIdentifier)
 								.attr('role', 'button')
 								.attr('data-toggle', 'collapse')
+								.attr('data-bs-toggle', 'collapse')
 								.attr('data-parent', '#t3ddy-accordeon-'+containerIdentifier)
 								.attr('href', '#t3ddy-accordion-'+itemIdentifier)
 								.attr('aria-controls', 't3ddy-accordion-'+itemIdentifier)
@@ -235,7 +237,7 @@ define([
 				var $newTabLinkTab = $('<li />').addClass('newTabLink');
 				var $newTabLink = $('<a />')
 					.text('+')
-					.attr('title', TYPO3.l10n.localize('newContentElement'))
+					.attr('title', TYPO3.lang.newContentElement)
 					.appendTo($newTabLinkTab);
 
 				var draggingIsEnabled = createNewItemLink($t3ddyContainer, $items, $newTabLink);
@@ -270,14 +272,14 @@ define([
 				}
 			});
 
-			console.log('has tabs', $container.hasClass('t3ddy-tabs'))
+			//console.log('has tabs', $container.hasClass('t3ddy-tabs'))
 			if ($container.hasClass('t3ddy-tabs')) {
 				$tabContent.appendTo($container);
 
 				// Add the built tab content to TYPO3 BE container
 				$container.prependTo($t3ddyContainer);
 
-				console.log('container', $container);
+				//console.log('container', $container);
 
 				// Set original index data to each tab
 				$('> ul.nav-tabs li', $container).each(function(i){
@@ -320,7 +322,7 @@ define([
 				var newTabLinkWrap = $('<div />').addClass('newTabLink');
 				var newTabLinkLink = $('<a />')
 					.addClass('btn btn-success')
-					.attr('title', TYPO3.l10n.localize('newContentElement'))
+					.attr('title', TYPO3.lang.newContentElement)
 					.append(
 						$('<span />').text('+')
 					);
@@ -360,7 +362,7 @@ define([
 				}
 			}
 
-			console.log('to remove', $container, $container.nextAll());
+			//console.log('to remove', $container, $container.nextAll());
 			// Remove old stuff
 			$t3ddyContainer.nextAll().remove();
 		});

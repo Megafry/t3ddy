@@ -27,9 +27,9 @@ class TabOrder
      * Outputs json string response.
      *
      * @param ServerRequestInterface $request
-     * @return Response
+     * @return JsonResponse
      */
-    public function change(ServerRequestInterface $request) : ResponseInterface
+    public function change(ServerRequestInterface $request) : JsonResponse
     {
         $parameters = GeneralUtility::_GPmerged('t3ddy');
 
@@ -54,8 +54,8 @@ class TabOrder
         $dataHandler->start([], $cmd);
         $dataHandler->process_cmdmap();
 
-        $response = new JsonResponse('');
-        $response->getBody()->write(json_encode(['status' => 'ok']));
-        return $response;
+        return new JsonResponse(['status' => 'ok']);
+        //$response->getBody()->write(json_encode(['status' => 'ok']));
+        //return $response;
     }
 }

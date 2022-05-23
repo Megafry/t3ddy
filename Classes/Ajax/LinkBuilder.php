@@ -26,10 +26,10 @@ class LinkBuilder
      * Builds the link to create a new t3ddy item
      *
      * @param ServerRequestInterface $request
-     * @return ResponseInterface
+     * @return JsonResponse
      * @throws \TYPO3\CMS\Backend\Routing\Exception\RouteNotFoundException
      */
-    public function createNewItemLink(ServerRequestInterface $request) : ResponseInterface
+    public function createNewItemLink(ServerRequestInterface $request) : JsonResponse
     {
 
 
@@ -73,9 +73,9 @@ class LinkBuilder
         $link = $uriBuilder->buildUriFromRoute('record_edit', $urlParams);
         $uri = $link->getPath() . '?' . $link->getQuery();
 
-        $response = new JsonResponse('');
-        $response->getBody()->write(json_encode(['status' => 'ok', 'link' => $uri]));
-        return $response;
+        return new JsonResponse(['status' => 'ok', 'link' => $uri]);
+        //$response->getBody()->write(json_encode(['status' => 'ok', 'link' => $uri]));
+        //return $response;
     }
 
 

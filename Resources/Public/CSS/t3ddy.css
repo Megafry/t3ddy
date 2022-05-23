@@ -10,3 +10,7 @@
 .t3ddy-accordion-header {
 	outline: none;
 }
+
+.t3ddy .t3js-toggle-gridelements-column {
+    top: 40px;
+}
